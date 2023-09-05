@@ -39,3 +39,9 @@ input,
 select {
   box-sizing: border-box;
 }
+.active-border {
+  border: 1px solid var(--primary-color);
+}
+.active-border-bottom {
+  border-bottom: 2px solid var(--primary-color);
+}

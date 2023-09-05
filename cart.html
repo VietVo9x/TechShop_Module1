@@ -107,66 +107,99 @@
       <!-- cart -->
       <section class="checkout">
         <div class="container">
-          <table class="list-cart">
-            <thead>
-              <th>ACTION</th>
-              <th>IMAGE</th>
-              <th>PRODUCT</th>
-              <th>PRICE</th>
-              <th>QUANTITY</th>
-              <th>SUBTOTAL</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="product-remove">
-                  <a href=""><i class="fa-solid fa-x"></i></a>
-                </td>
-                <td class="product-thumnail">
-                  <a href=""
-                    ><img src="./assets/images/product/ram-1.jpg" alt=""
-                  /></a>
-                </td>
-                <td class="product-name">
-                  <a href="">SATA Internal SSD</a>
-                </td>
-                <td class="product-price">$16</td>
-                <td class="product-quantity">
-                  <a href="" class="quantity-down"> - </a
-                  ><input
-                    type="text"
-                    size="2"
-                    value="1"
-                    class="text-center"
-                  /><a href="" class="quantity-up"> + </a>
-                </td>
-                <td class="subtotal">$16</td>
-              </tr>
-              <tr>
-                <td class="product-remove">
-                  <a href=""><i class="fa-solid fa-x"></i></a>
-                </td>
-                <td class="product-thumnail">
-                  <a href=""
-                    ><img src="./assets/images/product/ram-1.jpg" alt=""
-                  /></a>
-                </td>
-                <td class="product-name">
-                  <a href="">SATA Internal SSD</a>
-                </td>
-                <td class="product-price">$16</td>
-                <td class="product-quantity">
-                  <a href="" class="quantity-down">-</a
-                  ><input
-                    type="text"
-                    value="1"
-                    size="2"
-                    class="text-center"
-                  /><a href="" class="quantity-up">+</a>
-                </td>
-                <td class="subtotal">$16</td>
-              </tr>
-            </tbody>
-          </table>
+          <form
+            action="
+"
+            class="form-totals"
+          >
+            <table class="list-cart">
+              <thead>
+                <th>ACTION</th>
+                <th>IMAGE</th>
+                <th>PRODUCT</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>SUBTOTAL</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="product-remove">
+                    <a href=""><i class="fa-solid fa-x"></i></a>
+                  </td>
+                  <td class="product-thumnail">
+                    <a href=""
+                      ><img src="./assets/images/product/ram-1.jpg" alt=""
+                    /></a>
+                  </td>
+                  <td class="product-name">
+                    <a href="">SATA Internal SSD</a>
+                  </td>
+                  <td class="product-price">$16</td>
+                  <td class="product-quantity">
+                    <a href="" class="quantity-down"> - </a
+                    ><input
+                      type="text"
+                      size="2"
+                      value="1"
+                      class="text-center"
+                    /><a href="" class="quantity-up"> + </a>
+                  </td>
+                  <td class="subtotal">$16</td>
+                </tr>
+                <tr>
+                  <td class="product-remove">
+                    <a href=""><i class="fa-solid fa-x"></i></a>
+                  </td>
+                  <td class="product-thumnail">
+                    <a href=""
+                      ><img src="./assets/images/product/ram-1.jpg" alt=""
+                    /></a>
+                  </td>
+                  <td class="product-name">
+                    <a href="">SATA Internal SSD</a>
+                  </td>
+                  <td class="product-price">$16</td>
+                  <td class="product-quantity">
+                    <a href="" class="quantity-down">-</a
+                    ><input
+                      type="text"
+                      value="1"
+                      size="2"
+                      class="text-center"
+                    /><a href="" class="quantity-up">+</a>
+                  </td>
+                  <td class="subtotal">$16</td>
+                </tr>
+                <tr>
+                  <td class="action" colspan="6">
+                    <div class="coupon">
+                      <div class="d-flex">
+                        <input
+                          type="text"
+                          placeholder="Counpon code"
+                          class="coupon-input"
+                        />
+                        <button
+                          class="action-btn coupon-btn"
+                          name="apply_coupon"
+                          type="submit"
+                        >
+                          APPLYCOUNPON
+                        </button>
+                      </div>
+                      <button
+                        class="update-cart action-btn"
+                        name="update_cart"
+                        type="submit"
+                      >
+                        Update Cart
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
           <div class="cart-totals">
             <h2>Cart totals</h2>
             <table class="table-cart-totals">
@@ -186,7 +219,11 @@
                 <td>$76</td>
               </tr>
             </table>
-            <a href="" class="checkout-btn">PROCEED TO CHECKOUT</a>
+            <div class="mt-4 text-center">
+              <button class="checkout-btn action-btn">
+                PROCEED TO CHECKOUT
+              </button>
+            </div>
           </div>
         </div>
       </section>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Techshop Cart</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -19,9 +19,9 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="./assets/css/base.css" />
-    <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="stylesheet" href="./assets/css/responesive.css" />
+    <link rel="stylesheet" href="./user/assets/css/base.css" />
+    <link rel="stylesheet" href="./user/assets/css/main.css" />
+    <link rel="stylesheet" href="./user/assets/css/responesive.css" />
   </head>
   <body>
     <div class="app">
@@ -41,16 +41,16 @@
                   ></a>
                   <ul class="shop-menu-dropdown">
                     <li>
-                      <a href="">Category</a>
+                      <a href="">Product</a>
                     </li>
                     <li>
-                      <a href="">My cart</a>
+                      <a href="">Cart</a>
                     </li>
                     <li>
-                      <a href="">My checkout</a>
+                      <a href="">Checkout</a>
                     </li>
                     <li>
-                      <a href="">My account</a>
+                      <a href="">Account</a>
                     </li>
                   </ul>
                 </li>
@@ -84,11 +84,8 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
 
-                <div class="user">
-                  <a href="./login.html"><i class="fa-solid fa-user"></i></a>
-                </div>
                 <div class="cart">
-                  <a href="./cart.html" class="position-relative">
+                  <a href="" class="position-relative">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span
                       class="quantity position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
@@ -97,6 +94,9 @@
                     </span>
                   </a>
                 </div>
+                <div class="user">
+                  <a href="./login.html"><i class="fa-solid fa-user"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -104,38 +104,130 @@
       </header>
       <!-- header close -->
 
-      <!-- login -->
-      <section class="login">
+      <!-- cart -->
+      <section class="checkout">
         <div class="container">
-          <div class="login-content">
-            <div class="login-title">
-              <h3 class="heading">Login</h3>
-              <span>or</span>
-              <a href="./register.html" class="text-login">Register</a>
+          <form
+            action="
+"
+            class="form-totals"
+          >
+            <table class="list-cart">
+              <thead>
+                <th>ACTION</th>
+                <th>IMAGE</th>
+                <th>PRODUCT</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>SUBTOTAL</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="product-remove">
+                    <a href=""><i class="fa-solid fa-x"></i></a>
+                  </td>
+                  <td class="product-thumnail">
+                    <a href=""
+                      ><img src="./user/assets/images/product/ram-1.jpg" alt=""
+                    /></a>
+                  </td>
+                  <td class="product-name">
+                    <a href="">SATA Internal SSD</a>
+                  </td>
+                  <td class="product-price">$16</td>
+                  <td class="product-quantity">
+                    <a href="" class="quantity-down"> - </a
+                    ><input
+                      type="text"
+                      size="2"
+                      value="1"
+                      class="text-center"
+                    /><a href="" class="quantity-up"> + </a>
+                  </td>
+                  <td class="subtotal">$16</td>
+                </tr>
+                <tr>
+                  <td class="product-remove">
+                    <a href=""><i class="fa-solid fa-x"></i></a>
+                  </td>
+                  <td class="product-thumnail">
+                    <a href=""
+                      ><img src="./user/assets/images/product/ram-1.jpg" alt=""
+                    /></a>
+                  </td>
+                  <td class="product-name">
+                    <a href="">SATA Internal SSD</a>
+                  </td>
+                  <td class="product-price">$16</td>
+                  <td class="product-quantity">
+                    <a href="" class="quantity-down">-</a
+                    ><input
+                      type="text"
+                      value="1"
+                      size="2"
+                      class="text-center"
+                    /><a href="" class="quantity-up">+</a>
+                  </td>
+                  <td class="subtotal">$16</td>
+                </tr>
+                <tr>
+                  <td class="action" colspan="6">
+                    <div class="coupon">
+                      <div class="d-flex">
+                        <input
+                          type="text"
+                          placeholder="Counpon code"
+                          class="coupon-input"
+                        />
+                        <button
+                          class="action-btn coupon-btn"
+                          name="apply_coupon"
+                          type="submit"
+                        >
+                          APPLYCOUNPON
+                        </button>
+                      </div>
+                      <button
+                        class="update-cart action-btn"
+                        name="update_cart"
+                        type="submit"
+                      >
+                        Update Cart
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+          <div class="cart-totals">
+            <h2>Cart totals</h2>
+            <table class="table-cart-totals">
+              <tr class="cart-subtotal">
+                <th>Subtotal</th>
+                <td>$76</td>
+              </tr>
+              <tr class="shipping">
+                <th>Shipping</th>
+                <td>
+                  Enter Your Address To View Shipping Options.
+                  <a href="">CALCULATE SHIPPING</a>
+                </td>
+              </tr>
+              <tr class="oder-total">
+                <th>Total</th>
+                <td>$76</td>
+              </tr>
+            </table>
+            <div class="mt-4 text-center">
+              <button class="checkout-btn action-btn">
+                PROCEED TO CHECKOUT
+              </button>
             </div>
-            <form action="" class="form-login">
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" id="email" />
-                <small class="error"></small>
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="text" id="password" />
-                <small class="error"></small>
-              </div>
-
-              <div class="form-btn">
-                <button>LOGIN</button>
-              </div>
-              <div class="forgot-password text-end">
-                <a href="">Lost your password?</a>
-              </div>
-            </form>
           </div>
         </div>
       </section>
-      <!-- login -->
+      <!-- cart -->
 
       <!-- footer -->
       <footer class="footer">
@@ -201,7 +293,9 @@
             </ul>
           </div>
           <div class="footer-bottom">
-            <a href=""><img src="./assets/images/payment-1.png" alt="" /></a>
+            <a href=""
+              ><img src="./user/assets/images/payment-1.png" alt=""
+            /></a>
           </div>
         </div>
       </footer>
@@ -219,7 +313,6 @@
             <input type="text" />
             <button>Search</button>
           </form>
-          <span class="close"><i class="fa-solid fa-x"></i></span>
         </div>
       </div>
       <!-- modal close -->
@@ -229,7 +322,8 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/login.js"></script>
+
+    <script src="./user/js/modal.js"></script>
+    <script src="./user/js/cart.js"></script>
   </body>
 </html>

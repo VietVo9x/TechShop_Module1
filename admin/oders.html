@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oders managerment</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/base.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/responesive.css" />
+  </head>
+  <body>
+    <div class="app">
+      <section class="users">
+        <div class="container-fluid">
+          <div class="users-content">
+            <div class="left-side-bar">
+              <div class="infor">
+                <div class="image">
+                  <img src="./assets/images/avarta.jpg" alt="" />
+                </div>
+                <div class="infor-body">
+                  <p>Role: <span>ADMIN</span></p>
+                  <h3>Nguyen Van A</h3>
+                  <button class="edit">Edit</button>
+                </div>
+              </div>
+              <ul class="list-action">
+                <li>
+                  <a href=""><i class="fa-solid fa-list"></i>Dashboard</a>
+                </li>
+                <li>
+                  <a href="./users.html"
+                    ><i class="fa-solid fa-users"></i>Users</a
+                  >
+                </li>
+                <li>
+                  <a href="./products.html"
+                    ><i class="fa-solid fa-cubes"></i>Products</a
+                  >
+                </li>
+                <li>
+                  <a href="./oders.html" class="active"
+                    ><i class="fa-solid fa-file-invoice-dollar"></i>Oders</a
+                  >
+                </li>
+                <li>
+                  <a href="./reviews.html"
+                    ><i class="fa-solid fa-comments"></i>Reviews</a
+                  >
+                </li>
+                <li>
+                  <a href="./banners.html"
+                    ><i class="fa-solid fa-image"></i>Banners</a
+                  >
+                </li>
+                <li>
+                  <a href="./vouchers.html"
+                    ><i class="fa-solid fa-gift"></i>Vouchers</a
+                  >
+                </li>
+                <li>
+                  <a href="./login.html"
+                    ><i class="fa-solid fa-arrow-right-from-bracket"></i
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="content-right">
+              <div class="managerment">
+                <h3>Oders Management</h3>
+                <button class="action blue-color" id="add-product-oder">
+                  Add product
+                </button>
+                <div class="arrange-product">
+                  <span>Sort:</span>
+                  <select id="sort-oder">
+                    <option value="">Order placed</option>
+                    <option value="1">Preparing to ship</option>
+                    <option value="2">In transit</option>
+                    <option value="3">Delivered</option>
+                    <option value="4">Cancelled</option>
+                  </select>
+                </div>
+              </div>
+              <div class="list-manager">
+                <form action="" class="search-account" id="search-product-oder">
+                  <input type="text" placeholder="Search by name" />
+                  <button type="">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+                <table class="table-manager" id="list-oders">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Oder ID</th>
+                      <th>Date</th>
+                      <th>User Oder</th>
+                      <th>Total Oder Value</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>2</td>
+                      <td>ODER_002</td>
+                      <td>3/9/2023</td>
+                      <td>user_002</td>
+                      <td>$192</td>
+                      <td>Oder placed</td>
+                      <td class="td-action">
+                        <button class="action view primary-color">View</button
+                        ><button class="action edit blue-color">Edit</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>ODER_003</td>
+                      <td>4/9/2023</td>
+                      <td>user_003</td>
+                      <td>$1000</td>
+                      <td>Oder placed</td>
+                      <td class="td-action">
+                        <button class="action view primary-color">View</button
+                        ><button class="action edit blue-color">Edit</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>ODER_001</td>
+                      <td>5/9/2023</td>
+                      <td>user_001</td>
+                      <td>$100</td>
+                      <td>Oder placed</td>
+                      <td class="td-action">
+                        <button class="action primary-color" id="btn-view">
+                          View</button
+                        ><button class="action blue-color" id="btn-edit">
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="./js/oders.js"></script>
+  </body>
+</html>

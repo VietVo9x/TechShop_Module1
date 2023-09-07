@@ -174,3 +174,6 @@ button.blue-color {
 
   background-color: var(--white-color);
 }
+.managerment h3 {
+  font-size: 24px;
+}

@@ -83,18 +83,17 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
 
-               
                 <div class="cart">
                   <a href="./cart.html" class="position-relative">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span
                       class="quantity position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                     >
-                      99+
+                      0
                     </span>
                   </a>
                 </div>
-                 <div class="user">
+                <div class="user">
                   <a href="./login.html"><i class="fa-solid fa-user"></i></a>
                 </div>
               </div>
@@ -110,26 +109,79 @@
           <div class="category-content">
             <div class="category-left">
               <h4>CATEGORIES</h4>
-              <ul class="menu-category">
+              <ul class=" menu-category">
                 <li>
-                  <a href="">Accessories</a>
+                  <input
+                    type="checkbox"
+                    id="accessories"
+                    value="1"
+                    data-filter="category"
+                  />
+                  <label for="accessories">Accessories</label>
+                </li>
+
+                <li>
+                  <input
+                    type="checkbox"
+                    id="pc"
+                    value="2"
+                    data-filter="category"
+                  /><label for="pc">PC</label>
                 </li>
                 <li>
-                  <a href="">Computer</a>
-                  <ul></ul>
+                  <input
+                    type="checkbox"
+                    id="laptop"
+                    value="3"
+                    data-filter="category"
+                  /><label for="laptop">Laptop</label>
                 </li>
                 <li>
-                  <a href="">LapTop</a>
+                  <input
+                    type="checkbox"
+                    id="gaming-gear"
+                    value="4"
+                    data-filter="category"
+                  /><label for="gaming-gear">Gaming gear</label>
                 </li>
                 <li>
-                  <a href="">Gaming gear</a>
+                  <h4>Prices</h4>
+                </li>
+
+                <li>
+                  <input
+                    type="checkbox"
+                    id="price-1"
+                    value="1-50"
+                    data-filter="price"
+                  />
+                  <label for="price-1">$1 - $50</label>
+                </li>
+
+                <li>
+                  <input
+                    type="checkbox"
+                    id="price-2"
+                    value="51-100"
+                    data-filter="price"
+                  /><label for="price-2">$51 - 100</label>
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="price-3"
+                    value="101-250"
+                    data-filter="price"
+                  /><label for="price-3">$101 - $250</label>
                 </li>
               </ul>
               <h4>TOP RATED PRODUCTS</h4>
               <ul class="top-rate-list">
                 <li class="top-rate-item">
                   <a href=""
-                    ><img src="./user/assets/images/product/daynguon.jpg" alt=""
+                    ><img
+                      src="./user/assets/images/product/daynguon.jpg"
+                      alt=""
                   /></a>
                   <div class="top-rate-item-desc">
                     <a href="">HDMI to VGA Converter</a>
@@ -139,7 +191,7 @@
                 </li>
                 <li class="top-rate-item">
                   <a href=""
-                    ><img src="./user/assets/images/product/pc1.jpg" alt=""
+                    ><img src="./user/assets/images/product/casepc.jpg" alt=""
                   /></a>
                   <div class="top-rate-item-desc">
                     <a href=""> HDMI to VGA Converter</a>
@@ -160,124 +212,15 @@
               </ul>
             </div>
             <div class="category-right">
-              <div class="nav-filter">
-                <a href="" class="horizontal"
-                  ><i class="fa-solid fa-table"></i></i
-                ></a>
-                <a href="" class="vertical"><i class="fa-solid fa-list"></i></a>
-                
-                <select name="" id="product-filter" >
-                    <option value="">Default sorting</option>
-                    <option value="1">Sort by average rating</option>
-                    <option value="2">Sort by price low to hight</option>
-                    <option value="3">Sort by price hight to low</option>
-                </select>
-              </div>
               <div class="category-products">
                 <div class="card">
                   <div class="card-top">
                     <a href=""
-                      ><img src="./user/assets/images/product/usb2.jpg" alt="..."
-                    /></a>
-                    <div class="btn-prosition">
-                      <a href=""><i class="fa-regular fa-eye"></i></a>
-                      <a href=""><i class="fa-solid fa-heart"></i></a>
-                      <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <a class="card-title" href="">SATA internal SSD</a>
-                    <p class="card-price">$16</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-top">
-                    <a href=""
-                      ><img src="./user/assets/images/product/usb1.jpg" alt="..."
-                    /></a>
-                    <div class="btn-prosition">
-                      <a href=""><i class="fa-regular fa-eye"></i></a>
-                      <a href=""><i class="fa-solid fa-heart"></i></a>
-                      <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <a class="card-title" href="">SATA internal SSD</a>
-                    <p class="card-price">$16</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-top">
-                    <a href=""
-                      ><img src="./user/assets/images/product/usb3.jpg" alt="..."
-                    /></a>
-                    <div class="btn-prosition">
-                      <a href=""><i class="fa-regular fa-eye"></i></a>
-                      <a href=""><i class="fa-solid fa-heart"></i></a>
-                      <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <a class="card-title" href="">SATA internal SSD</a>
-                    <p class="card-price">$16</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-top">
-                    <a href=""
                       ><img
-                        src="./user/assets/images/product/sandisck.jpg"
+                        src="./user/assets/images/product/usb2.jpg"
                         alt="..."
                     /></a>
-                    <div class="btn-prosition">
-                      <a href=""><i class="fa-regular fa-eye"></i></a>
-                      <a href=""><i class="fa-solid fa-heart"></i></a>
-                      <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <a class="card-title" href="">SATA internal SSD</a>
-                    <p class="card-price">$16</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-top">
-                    <a href=""
-                      ><img src="./user/assets/images/product/loa1.jpg" alt="..."
-                    /></a>
-                    <div class="btn-prosition">
-                      <a href=""><i class="fa-regular fa-eye"></i></a>
-                      <a href=""><i class="fa-solid fa-heart"></i></a>
-                      <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <a class="card-title" href="">SATA internal SSD</a>
-                    <p class="card-price">$16</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-top">
-                    <a href=""
-                      ><img src="./user/assets/images/product/laptop2.jpg" alt="..."
-                    /></a>
-                    <div class="btn-prosition">
-                      <a href=""><i class="fa-regular fa-eye"></i></a>
-                      <a href=""><i class="fa-solid fa-heart"></i></a>
-                      <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <a class="card-title" href="">SATA internal SSD</a>
-                    <p class="card-price">$16</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-top">
-                    <a href=""
-                      ><img src="./user/assets/images/product/ram-1.jpg" alt="..."
-                    /></a>
-                    <div class="btn-prosition">
+                    <div class="btn-position">
                       <a href=""><i class="fa-regular fa-eye"></i></a>
                       <a href=""><i class="fa-solid fa-heart"></i></a>
                       <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
@@ -359,7 +302,9 @@
             </ul>
           </div>
           <div class="footer-bottom">
-            <a href=""><img src="./user/assets/images/payment-1.png" alt="" /></a>
+            <a href=""
+              ><img src="./user/assets/images/payment-1.png" alt=""
+            /></a>
           </div>
         </div>
       </footer>
@@ -387,8 +332,8 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script src="./user/js/product.js
-"></script>
-    <script src="./user/js/modal.js"></script>
+    <script src="./user/js/product.js"></script>
+    <script src="./Component/modal.js"></script>
+    <script src="./Model/database.js"></script>
   </body>
 </html>

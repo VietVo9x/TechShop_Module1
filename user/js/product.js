@@ -1,8 +1,23 @@
 //truy van den doi tuong hien thi
-const categpryProductElement = document.querySelector(".category-products");
-const listProduct = JSON.parse(localStorage.getItem("products"));
-//lay san pham tren local ve
-renderProducts(listProduct);
+const categpryProductElement = document.querySelector(".category-products"); //noi hien thi toan bo san pham
+const productsDB = JSON.parse(localStorage.getItem("products")) || []; //list san pham hien thi
+const iconCartElement = document.querySelector(".quantity"); // so luong gio hang
+const listCart = JSON.parse(localStorage.getItem("listCart")) || []; // list san pham da mua
+const userLogin = JSON.parse(localStorage.getItem("userLogin")); //email dang mua
+renderAllQuantityCart();
+function renderAllQuantityCart() {
+  const cartForUserLogin = listCart.find(
+    (cart) => cart.email === userLogin.email
+  );
+  console.log(cartForUserLogin.carts);
+  const carts = cartForUserLogin.carts;
+  let qtys = 0;
+  carts.forEach(function (item) {
+    qtys += item.quantity;
+  });
+  iconCartElement.textContent = qtys;
+}
+//ham render toan bo san pham
 function renderProducts(listItems) {
   let html = "";
   listItems.map(function (user) {
@@ -14,7 +29,7 @@ function renderProducts(listItems) {
                     <div class="btn-position">
                       <a href="#" onclick="handleViewProduct(${user.product_id})"><i class="fa-regular fa-eye"></i></a>
                       <a href=""><i class="fa-solid fa-heart"></i></a>
-                      <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                      <a href="#" onclick="handleAddToCartProduct(${user.product_id})"><i class="fa-solid fa-cart-shopping"></i></a>
                     </div>
                   </div>
                   <div class="card-body">
@@ -25,6 +40,7 @@ function renderProducts(listItems) {
   });
   categpryProductElement.innerHTML = html;
 }
+renderProducts(productsDB);
 
 // truy van den the ul menu-category lay tat ca the input
 const categorysInputElement = document.querySelectorAll(".menu-category input");
@@ -76,17 +92,72 @@ categorysInputElement.forEach(function (inputElement) {
       );
     }
 
-    renderProduct(dataFilter); // ta được mảng sản phẩm đã filter vả render ra
+    renderProducts(dataFilter); // ta được mảng sản phẩm đã filter vả render ra
     console.log(1111, dataFilter);
   });
 });
 
 //handle view product
 function handleViewProduct(product_id) {
-  console.log(product_id);
-  const product = listProduct.filter((item) => {
-    return product_id === item.product_id;
-  });
+  const product = productsDB.find((item) => product_id === item.product_id);
   localStorage.setItem("product", JSON.stringify(product));
   document.location.href = "./product-detail.html";
+}
+
+//handle add to cart product
+
+function handleAddToCartProduct(id) {
+  //có product_id -> tìm produc trong products database
+  const product = productsDB.find((item) => item.product_id === id);
+
+  //ngày mua sản phẩm
+  const currentDate = new Date();
+
+  const day = currentDate.getDate().toString().padStart(2, "0"); // Lấy ngày và định dạng thành 2 chữ số
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, "0"); // Lấy tháng và định dạng thành 2 chữ số
+  const year = currentDate.getFullYear();
+
+  const formattedDate = `${day}-${month}-${year}`;
+
+  // sản phẩm muốn mua
+  const productBuy = {
+    product_id: product.product_id,
+    price: product.price,
+    name: product.name,
+    img: product.image[0],
+    quantity: 1,
+    date: formattedDate,
+    status: 0,
+  };
+  // Tìm nơi chứa sản phẩm của user
+  const myCart = listCart.find((cart) => cart.email == userLogin.email);
+  if (!myCart) {
+    //nếu chưa có dữ liệu
+    const newCart = {
+      //tạo nơi chứa giỏ hàng mới
+      email: userLogin.email, //có email login
+      carts: [productBuy], //giỏ hàng gồm mảng nhiều sản phẩm []
+    };
+    listCart.push(newCart); // tạo mới listCart nếu chưa có , có rồi thì push sản phẩm mới vào
+    localStorage.setItem("listCart", JSON.stringify(listCart)); //đẩy lên lại local
+    return;
+  } else {
+    //tạo biến newCart : tìm trong listCart có email = email đang login
+    const newCart = listCart.find((cart) => cart.email == userLogin.email);
+    const carts = newCart.carts; // giỏ hàng
+
+    const cart = carts.find(
+      //tìm trong giỏ hàng có sản phẩm trùng với sản phẩm mún mua
+      (product) => product.product_id === productBuy.product_id
+    );
+    if (cart) {
+      //nếu có thì tăng số lượng lên
+      cart.quantity++;
+    } else {
+      carts.push(productBuy); //nếu không có thì thêm sản phẩm muốn mua vào giỏ hàng
+    }
+
+    localStorage.setItem("listCart", JSON.stringify(listCart)); //gởi lên lại local
+    renderAllQuantityCart();
+  }
 }

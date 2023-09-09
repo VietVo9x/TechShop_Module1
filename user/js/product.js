@@ -9,12 +9,17 @@ function renderAllQuantityCart() {
   const cartForUserLogin = listCart.find(
     (cart) => cart.email === userLogin.email
   );
-  console.log(cartForUserLogin.carts);
-  const carts = cartForUserLogin.carts;
   let qtys = 0;
-  carts.forEach(function (item) {
-    qtys += item.quantity;
-  });
+
+  if (!cartForUserLogin) {
+    iconCartElement.textContent = qtys;
+  } else {
+    const carts = cartForUserLogin.carts;
+    carts.forEach(function (item) {
+      qtys += item.quantity;
+    });
+  }
+  iconCartElement.textContent = qtys;
   iconCartElement.textContent = qtys;
 }
 //ham render toan bo san pham
@@ -68,10 +73,10 @@ categorysInputElement.forEach(function (inputElement) {
         filterPrice.push({ min: Number(value[0]), max: Number(value[1]) });
       }
     });
-    let dataCategory = listProduct; //nếu lúc mình chưa filter thì dataCategory = data ban đầu
+    let dataCategory = productsDB; //nếu lúc mình chưa filter thì dataCategory = data ban đầu
     if (isCheckedCategory) {
       //nếu isCheckedCategory = true là mình đã checked
-      dataCategory = listProduct.filter((product) =>
+      dataCategory = productsDB.filter((product) =>
         filterCategory.find((category) => category === product.category)
       );
       /**đoạn mã trên sẽ lọc listProduct và chỉ trả về các sản phẩm có product.category trùng với một phần tử

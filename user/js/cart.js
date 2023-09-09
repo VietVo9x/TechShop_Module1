@@ -7,21 +7,31 @@ const productsDB = JSON.parse(localStorage.getItem("products")) || []; //list sa
 const iconCartElement = document.querySelector(".quantity"); // so luong gio hang
 
 renderAllQuantityCart();
+//check dang nhap thi hien thi ra cart cua account don
+if (userLogin.isLogin) {
+  const CartForUserLogin = listCart.find(
+    (cart) => cart.email === userLogin.email
+  );
+  if (userLogin.email && CartForUserLogin.carts.length == 0) {
+    //truy vấn đến content cho nó là không có gì
+    const listCartsElement = document.querySelector(".list-carts");
+    listCartsElement.innerHTML =
+      "<h3 class='text-center'>Giỏ hàng bạn trống</h3>";
+  } else if (CartForUserLogin) {
+    const filteredList = listCart.filter(
+      (item) => !item.hasOwnProperty("email")
+    );
 
-//check có danh sách oder của account này không ? show  : thông báo k có
-const CartForUserLogin = listCart.find(
-  (cart) => cart.email === userLogin.email
-);
-console.log(CartForUserLogin);
-if (userLogin.email && CartForUserLogin.length == 0) {
-  //truy vấn đến content cho nó là không có gì
-  const listCartsElement = document.querySelector(".list-carts");
-  listCartsElement.innerHTML =
-    "<h3 class='text-center'>Giỏ hàng bạn trống</h3>";
+    console.log(filteredList);
+    renderCart(filteredList);
+    showCartTotals();
+  }
 } else {
-  renderCart(CartForUserLogin.carts);
+  // renderCart();
   // showCartTotals();
 }
+//k dang nhap thi hien thi ra san pham cua ng dung k dang nhap
+//check có danh sách oder của account này không ? show  : thông báo k có
 
 //hàm render ra danh sách oder
 function renderCart(cart) {
@@ -45,17 +55,17 @@ function renderCart(cart) {
                   </td>
                   <td class="product-price">${Number(element.price)}</td>
                   <td class="product-quantity">
-                    <a href="#" class="quantity-down" onclick="handleDownQuantity(${
+                    <button class="quantity-down" onclick="handleDownQuantity(${
                       element.product_id
-                    })"> - </a
+                    })"> - </button
                     ><input
                       type="text"
                       size="2"
                       value="${element.quantity}"
                       class="text-center"
-                    /><a href="#" class="quantity-up" onclick="handleUpQuantity(${
+                    /><button href="#" class="quantity-up" onclick="handleUpQuantity(${
                       element.product_id
-                    })"> + </a>
+                    })"> + </button>
                   </td>
                   <td class="subtotal">$${
                     Number(element.price) * Number(element.quantity)
@@ -95,34 +105,34 @@ function renderCart(cart) {
 }
 
 // hàm show tính tổng tiền và btn chuyển sang checkout, nếu có danh sách oder ? show ra : không show
-// function showCartTotals() {
-//   //truy van den cart-totals
-//   const cartsTotalElement = document.querySelector(".cart-totals");
-//   html = `   <h2>Cart totals</h2>
-//             <table class="table-cart-totals">
-//               <tr class="cart-subtotal">
-//                 <th>Subtotal</th>
-//                 <td>$${totalCost}</td>
-//               </tr>
-//               <tr class="shipping">
-//                 <th>Shipping</th>
-//                 <td>
-//                   Enter Your Address To View Shipping Options.
-//                   <a href="">CALCULATE SHIPPING</a>
-//                 </td>
-//               </tr>
-//               <tr class="oder-total">
-//                 <th>Total</th>
-//                 <td>$${totalCost}</td>
-//               </tr>
-//             </table>
-//             <div class="mt-4 text-center">
-//               <button class="checkout-btn action-btn">
-//                 PROCEED TO CHECKOUT
-//               </button>
-//             </div>`;
-//   cartsTotalElement.innerHTML = html;
-// }
+function showCartTotals() {
+  //truy van den cart-totals
+  const cartsTotalElement = document.querySelector(".cart-totals");
+  html = `   <h2>Cart totals</h2>
+            <table class="table-cart-totals">
+              <tr class="cart-subtotal">
+                <th>Subtotal</th>
+                <td>$$</td>
+              </tr>
+              <tr class="shipping">
+                <th>Shipping</th>
+                <td>
+                  Enter Your Address To View Shipping Options.
+                  <a href="">CALCULATE SHIPPING</a>
+                </td>
+              </tr>
+              <tr class="oder-total">
+                <th>Total</th>
+                <td>$$</td>
+              </tr>
+            </table>
+            <div class="mt-4 text-center">
+              <button class="checkout-btn action-btn">
+                PROCEED TO CHECKOUT
+              </button>
+            </div>`;
+  cartsTotalElement.innerHTML = html;
+}
 
 //hàm tăng só lượng sản phẩm trong 1 oder
 function handleUpQuantity(id) {
@@ -135,6 +145,7 @@ function handleUpQuantity(id) {
   localStorage.setItem("listCart", JSON.stringify(listCart)); //gủi lại local
   renderCart(CartForUserLogin.carts); //render lại danh sách oder
   renderAllQuantityCart(); //render lại giỏ hàng header
+  showCartTotals();
 }
 
 //hàm giảm só lượng sản phẩm trong 1 oder
@@ -183,7 +194,6 @@ function renderAllQuantityCart() {
   const cartForUserLogin = listCart.find(
     (cart) => cart.email === userLogin.email
   );
-  console.log(cartForUserLogin.carts);
   const carts = cartForUserLogin.carts;
   let qtys = 0;
   carts.forEach(function (item) {

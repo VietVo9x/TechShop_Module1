@@ -81,7 +81,11 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
                 <div class="cart">
-                  <a href="./cart.html" class="position-relative">
+                  <a
+                    href="./cart.html"
+                    class="position-relative"
+                    id="go-to-cart"
+                  >
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span
                       class="quantity position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
@@ -243,109 +247,14 @@
       <section class="list-product">
         <div class="container">
           <div class="list-product-title">
-            <a href="">New Product</a>
-            <a href="">Best Deal</a>
+            <button onclick="handleClickNewProduct()" id="new-product-btn">
+              New Product
+            </button>
+            <button onclick="handleClickBestDealProduct()" id="best-deal-btn">
+              Best Deal
+            </button>
           </div>
-          <div class="list-card">
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img src="./user/assets/images/product/bag1.jpg" alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img src="./user/assets/images/product/usb2.jpg" alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img
-                    src="./user/assets/images/product/sandisk.jpg"
-                    alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img src="./user/assets/images/product/loa1.jpg" alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img src="./user/assets/images/product/ram-1.jpg" alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img src="./user/assets/images/product/ram-1.jpg" alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-          </div>
+          <div class="list-card" id="category-product"></div>
           <div class="view-link">
             <a href="">ViewMore</a>
           </div>
@@ -403,142 +312,7 @@
           <div class="best-selling-title">
             <a href=""> <a href="">Best Selling Items</a></a>
           </div>
-          <div class="list-card">
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img
-                    src="./user/assets/images/product/laptop2.jpg"
-                    alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img src="./user/assets/images/product/usb3.jpg" alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img src="./user/assets/images/product/usb1.jpg" alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img src="./user/assets/images/product/usb2.jpg" alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img
-                    src="./user/assets/images/product/sandisk.jpg"
-                    alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img src="./user/assets/images/product/loa1.jpg" alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img
-                    src="./user/assets/images/product/taycamchoigame.jpg"
-                    alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <a href=""
-                  ><img src="./user/assets/images/product/usb3.jpg " alt="..."
-                /></a>
-                <div class="btn-position">
-                  <a href=""><i class="fa-regular fa-eye"></i></a>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
-                  <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                </div>
-              </div>
-              <div class="card-body">
-                <a class="card-title" href="">SATA internal SSD</a>
-                <p class="card-price">$16</p>
-              </div>
-            </div>
-          </div>
+          <div class="list-card" id="best-selling-products"></div>
           <div class="view-link">
             <a href="">ViewMore</a>
           </div>
@@ -660,6 +434,8 @@
     ></script>
 
     <script src="./Component/modal.js"></script>
+    <script src="./Model/database.js"></script>
+    <script src="./user/js/index.js"></script>
     <script src="./Component/checkLogin.js"></script>
   </body>
 </html>

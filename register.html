@@ -23,7 +23,7 @@
   </head>
   <body>
     <div class="app">
-      <!-- header -->
+      <!-- nav-bar -->
       <header>
         <nav class="nav-bar">
           <div class="container">
@@ -31,24 +31,22 @@
               <div class="branch-logo">
                 <a href="./index.html"><span>T</span>ech<span>Shop</span></a>
               </div>
-              <ul class="menu-list">
+              <ul class="menu-list d-md-flex">
                 <li class="menu-item"><a href="./index.html">Home</a></li>
                 <li class="menu-item shop-menu">
-                  <a href="./shop.html"
-                    >Shop <i class="fa-solid fa-sort-down"></i
-                  ></a>
+                  <a href="">Shop <i class="fa-solid fa-sort-down"></i></a>
                   <ul class="shop-menu-dropdown">
                     <li>
-                      <a href="">Product</a>
+                      <a href="./product.html">Product</a>
                     </li>
                     <li>
-                      <a href="">Cart</a>
+                      <a href="./cart.html">Cart</a>
                     </li>
                     <li>
                       <a href="">Checkout</a>
                     </li>
                     <li>
-                      <a href="">Account</a>
+                      <a href="./account.html">Account</a>
                     </li>
                   </ul>
                 </li>
@@ -74,16 +72,20 @@
                 </li>
               </ul>
 
-              <div class="btn__toggle hiden">
-                <i class="fa-solid fa-bars"></i>
-              </div>
               <div class="nav-bar__content-right">
-                <button class="search-btn" id="myBtn">
+                <div class="menu-item btn__toggle">
+                  <a href=""><i class="fa-solid fa-bars"></i></a>
+                </div>
+                <button class="search-btn" onclick="handleToggleSearchBar()">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
 
                 <div class="cart">
-                  <a href="./cart.html" class="position-relative">
+                  <a
+                    href="./cart.html"
+                    class="position-relative"
+                    id="go-to-cart"
+                  >
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span
                       class="quantity position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
@@ -92,15 +94,27 @@
                     </span>
                   </a>
                 </div>
+
                 <div class="user">
                   <a href="./login.html"><i class="fa-solid fa-user"></i></a>
                 </div>
               </div>
             </div>
           </div>
+          <div class="search-bar-toggle hiden">
+            <label
+              class="search-bar-toggle-btn back-home-btn"
+              onclick="handleToggleSearchBar()"
+              ><i class="fa-solid fa-arrow-left"></i
+            ></label>
+            <input type="text" id="search-bar" />
+            <label for="search-bar" class="search-bar-toggle-btn seach-bar-btn"
+              ><i class="fa-solid fa-magnifying-glass"></i
+            ></label>
+          </div>
         </nav>
       </header>
-      <!-- header close -->
+      <!-- nav-bar close -->
 
       <!-- login -->
       <section class="form-wapper">
@@ -249,7 +263,7 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script src="./Component/modal.js"></script>
+    <script src="./Component/searchBar.js"></script>
     <script src="./Component/checkLogin.js"></script>
     <script src="./Component/renderAllQuantityCart.js"></script>
     <script src="./user/js/register.js"></script>

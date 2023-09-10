@@ -4,7 +4,6 @@
 }
 /* nav-bar */
 .nav-bar {
-  height: 80px;
   background-color: var(--bg-grey);
   /* background-color: var(--text-color); */
 }
@@ -45,39 +44,44 @@
 .menu-item a:hover {
   color: var(--primary-color);
 }
-.shop-menu,
-.page-menu {
-  position: relative;
-}
 
-.shop-menu:hover .shop-menu-dropdown,
-.page-menu:hover .page-menu-dropdown {
-  visibility: visible;
-  opacity: 1;
+.btn__toggle button {
+  border: none;
+  outline: none;
+
+  width: 28px;
+  height: 28px;
+  display: none;
 }
-.shop-menu-dropdown,
-.page-menu-dropdown {
-  transition: all 0.25s ease;
-  visibility: hidden;
-  opacity: 0;
+.nav__overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  animation: fadeIn 3s linear;
+}
+.menu-list-mobile {
+  display: none;
+  transition: all 0.3s linear;
+  transform: translateX(-100%);
+}
+.menu-list-mobile-close {
   position: absolute;
-  top: 80px;
-  border: 1px solid #ccc;
-  border-top: 5px solid var(--primary-color);
-  background-color: var(--white-color);
-  min-width: 200px;
-  padding: 20px;
-  list-style-type: none;
-  z-index: 7;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  top: 1rem;
+  right: 1rem;
+  width: 35px;
+  height: 35px;
+  font-size: 35px;
+  color: #666;
 }
-.shop-menu-dropdown li,
-.page-menu-dropdown li {
-  line-height: 40px;
-}
-.shop-menu-dropdown li a,
-.page-menu-dropdown li a {
-  display: block;
-  padding: 0 12px;
+.translate-x {
+  transform: translateX(0);
 }
 .nav-bar__content-right {
   display: flex;
@@ -104,7 +108,44 @@
 .quantity {
   font-size: 12px;
 }
-/* nav-bar */
+/* nav-bar close*/
+
+/* search-bar-wrapper open*/
+.search-bar-toggle {
+  position: relative;
+  padding-bottom: 20px;
+  margin: 0 20px;
+  transition: all 0.3s ease;
+}
+.search-bar-toggle input {
+  width: 100%;
+  height: 40px;
+  padding: 0 50px;
+  border-radius: 20px;
+  border: none;
+}
+.search-bar-toggle-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.back-home-btn {
+  left: 0;
+  top: 30%;
+  transform: translateY(-50%);
+}
+.seach-bar-btn {
+  right: 0;
+  top: 30%;
+  transform: translateY(-50%);
+}
+
+/* search-bar-wrapper close*/
 
 /* slider */
 .slider {
@@ -523,42 +564,6 @@ button.carousel-btn-bottom.active i {
   margin-top: 30px;
   border-top: 2px solid #333;
   padding-top: 20px;
-}
-/* modal */
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 11; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-
-/* Modal Content/Box */
-.modal-content {
-  overflow: hidden;
-  background-color: transparent;
-  margin: 0 auto; /* 15% from the top and centered */
-  width: 70%;
-  border: none;
-  height: 100px;
-}
-
-/* The Close Button */
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 0 12px;
-  color: #ccc;
-  float: right;
-  font-size: 30px;
-  font-weight: bold;
-  z-index: 1;
 }
 
 .close:hover,
@@ -1209,3 +1214,12 @@ span.poster-in a:hover {
   color: var(--primary-color);
 }
 /* account-content close */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

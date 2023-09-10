@@ -167,3 +167,25 @@ function handleAddToCartProduct(id) {
     renderAllQuantityCart();
   }
 }
+
+//search product trên search bar
+function handleSearchProduct() {
+  // Lấy giá trị nhập vào từ ô input
+  const searchTerm = document.getElementById("search-bar").value.toLowerCase();
+
+  // Lọc ra các sản phẩm phù hợp với tên sản phẩm
+  const matchingProducts = productsDB.filter(function (product) {
+    return product.name.toLowerCase().includes(searchTerm);
+  });
+
+  // Xử lý kết quả tìm kiếm, ví dụ: hiển thị danh sách sản phẩm kết quả
+  renderProducts(matchingProducts);
+}
+
+//navbar responesive
+function handleOpenNavbarMobile() {
+  const menuListMobileElement = document.querySelector(".menu-list-mobile");
+  const overlayElement = document.querySelector(".nav__overlay");
+  menuListMobileElement.classList.toggle("translate-x");
+  overlayElement.classList.toggle("hiden");
+}

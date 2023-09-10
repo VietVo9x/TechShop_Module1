@@ -177,3 +177,35 @@ button.blue-color {
 .managerment h3 {
   font-size: 24px;
 }
+/* form modal */
+.form-edit-product {
+  overflow: scroll-Y;
+  margin: 0 auto;
+  padding: 30px 0;
+  width: 400px;
+}
+.form-edit-product > * {
+  margin-top: 30px;
+}
+.form-group input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+}
+
+.btn-action {
+  text-align: center;
+}
+.btn-action button {
+  padding: 6px 35px;
+  border-radius: 4px;
+  background-color: var(--blue-color);
+  color: var(--white-color);
+
+  border: none;
+  outline: none;
+}
+.btn-action button:hover {
+  background-color: var(--text-color);
+  color: var(--white-color);
+}

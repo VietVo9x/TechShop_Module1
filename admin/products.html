@@ -155,7 +155,7 @@
         </div>
       </section>
     </div>
-    <!-- Modal -->
+    <!-- Modal edit product-->
     <div
       class="modal fade"
       id="edit-product"
@@ -163,10 +163,12 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              EDIT PRODUCT
+            </h1>
             <button
               type="button"
               class="btn-close"
@@ -174,7 +176,42 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">
+            <form action="" class="form-edit-product">
+              <div class="form-group">
+                <label for="product-id">ID</label>
+                <input type="text" class="validate-input " id="product-id" />
+              </div>
+
+              <div class="form-group">
+                <label for="product-name">NAME</label>
+                <input type="text" class="validate-input " id="product-name" />
+              </div>
+              <div class="form-group">
+                <label for="product-price">PRICE</label>
+                <input type="text" class="validate-input " id="product-price" />
+              </div>
+              <div class="form-group">
+                <label for="product-in-stock">IN STOCK</label>
+                <input
+                  type="text"
+                  class="validate-input "
+                  id="product-in-stock"
+                />
+              </div>
+              <div class="form-group">
+                <label for="product-quantity-sold">QUANTIY SOLD</label>
+                <input
+                  type="text"
+                  class="validate-input "
+                  id="product-quantity-sold"
+                />
+              </div>
+              <div class="btn-action">
+                <button>Save</button>
+              </div>
+            </form>
+          </div>
           <div class="modal-footer">
             <button
               type="button"
@@ -183,12 +220,11 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal add product-->
     <div
       class="modal fade"
       id="add-product"
@@ -196,10 +232,10 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">ADD PRODUCT</h1>
             <button
               type="button"
               class="btn-close"
@@ -207,7 +243,45 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">
+            <form action="" class="form-edit-product">
+              <div class="form-group">
+                <label for="product-id">ID</label>
+                <input type="text" class="validate-input " id="product-id" />
+              </div>
+              <div class="form-group">
+                <label for="product-code">Product Code</label>
+                <input type="text" class="validate-input " id="product-code" />
+              </div>
+              <div class="form-group">
+                <label for="product-name">NAME</label>
+                <input type="text" class="validate-input " id="product-name" />
+              </div>
+              <div class="form-group">
+                <label for="product-price">PRICE</label>
+                <input type="text" class="validate-input " id="product-price" />
+              </div>
+              <div class="form-group">
+                <label for="product-in-stock">IN STOCK</label>
+                <input
+                  type="text"
+                  class="validate-input "
+                  id="product-in-stock"
+                />
+              </div>
+              <div class="form-group">
+                <label for="product-quantity-sold">QUANTIY SOLD</label>
+                <input
+                  type="text"
+                  class="validate-input "
+                  id="product-quantity-sold"
+                />
+              </div>
+              <div class="btn-action">
+                <button>Save</button>
+              </div>
+            </form>
+          </div>
           <div class="modal-footer">
             <button
               type="button"
@@ -216,7 +290,6 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>

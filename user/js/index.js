@@ -192,4 +192,10 @@ function renderAllQuantityCart() {
   iconCartElement.textContent = qtys;
 }
 
-//click vao ten san pham thi chuyen sang trang sp do
+//click open search-bar
+function handleToggleSearchBar() {
+  const searchBarWrapperElement = document.querySelector(".search-bar-toggle");
+  searchBarWrapperElement.classList.toggle("hiden");
+  searchBtnElement.classList.toggle("hiden");
+}
+

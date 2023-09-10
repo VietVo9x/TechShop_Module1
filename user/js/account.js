@@ -49,9 +49,8 @@ formUpdateElement.addEventListener("submit", (e) => {
   }
 
   //Gui len lai local
-  const updateListUsers = listUsers.splice(indexUser, 1, user);
-  localStorage.setItem("listUsers", JSON.stringify(updateListUsers));
-  console.log(listUsers);
+  listUsers.splice(indexUser, 1, user);
+  localStorage.setItem("listUsers", JSON.stringify(listUsers));
 });
 
 function getUser() {

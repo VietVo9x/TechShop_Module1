@@ -18,9 +18,8 @@ function renderAllQuantityCart() {
     carts.forEach(function (item) {
       qtys += item.quantity;
     });
+    iconCartElement.textContent = qtys;
   }
-  iconCartElement.textContent = qtys;
-  iconCartElement.textContent = qtys;
 }
 //ham render toan bo san pham
 function renderProducts(listItems) {
@@ -32,17 +31,18 @@ function renderProducts(listItems) {
                       ><img src="./user/assets/images/product/${user.image[0]}" alt="..."
                     /></a>
                     <div class="btn-position">
-                      <a href="#" onclick="handleViewProduct(${user.product_id})"><i class="fa-regular fa-eye"></i></a>
+                      <a href="#" onclick="handleViewProduct(event, ${user.product_id})"><i class="fa-regular fa-eye"></i></a>
                       <a href=""><i class="fa-solid fa-heart"></i></a>
-                      <a href="#" onclick="handleAddToCartProduct(${user.product_id})"><i class="fa-solid fa-cart-shopping"></i></a>
+                      <button  onclick="handleAddToCartProduct(${user.product_id})"><i class="fa-solid fa-cart-shopping"></i></button>
                     </div>
                   </div>
                   <div class="card-body">
-                    <a class="card-title" href="">${user.name}</a>
+                    <a class="card-title" href="#" onclick="handleViewProduct(event,${user.product_id})">${user.name}</a>
                     <p class="card-price">$${user.price}</p>
                   </div>
                 </div>`;
   });
+
   categpryProductElement.innerHTML = html;
 }
 renderProducts(productsDB);
@@ -103,7 +103,8 @@ categorysInputElement.forEach(function (inputElement) {
 });
 
 //handle view product
-function handleViewProduct(product_id) {
+function handleViewProduct(event, product_id) {
+  event.preventDefault();
   const product = productsDB.find((item) => product_id === item.product_id);
   localStorage.setItem("product", JSON.stringify(product));
   document.location.href = "./product-detail.html";

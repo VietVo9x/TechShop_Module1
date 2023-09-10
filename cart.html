@@ -36,21 +36,19 @@
               <ul class="menu-list">
                 <li class="menu-item"><a href="./index.html">Home</a></li>
                 <li class="menu-item shop-menu">
-                  <a href="./shop.html"
-                    >Shop <i class="fa-solid fa-sort-down"></i
-                  ></a>
+                  <a href="#">Shop <i class="fa-solid fa-sort-down"></i></a>
                   <ul class="shop-menu-dropdown">
                     <li>
-                      <a href="">Product</a>
+                      <a href="./product.html">Product</a>
                     </li>
                     <li>
-                      <a href="">Cart</a>
+                      <a href="./cart.html">Cart</a>
                     </li>
                     <li>
-                      <a href="">Checkout</a>
+                      <a href="./checkout.html">Checkout</a>
                     </li>
                     <li>
-                      <a href="">Account</a>
+                      <a href="./account.html">Account</a>
                     </li>
                   </ul>
                 </li>
@@ -107,17 +105,18 @@
       <!-- cart -->
       <section class="list-carts">
         <div class="container">
-          <table class="list-cart">
-            <thead>
-              <th>ACTION</th>
-              <th>IMAGE</th>
-              <th>PRODUCT</th>
-              <th>PRICE</th>
-              <th>QUANTITY</th>
-              <th>SUBTOTAL</th>
-            </thead>
-            <tbody>
-              <!-- <tr>
+          <form action="" class="form-list-cart">
+            <table class="list-cart">
+              <thead>
+                <th>ACTION</th>
+                <th>IMAGE</th>
+                <th>PRODUCT</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>SUBTOTAL</th>
+              </thead>
+              <tbody>
+                <!-- <tr>
                 <td class="product-remove">
                   <a href=""><i class="fa-solid fa-x"></i></a>
                 </td>
@@ -141,8 +140,9 @@
                 </td>
                 <td class="subtotal">$16</td>
               </tr> -->
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </form>
 
           <div class="cart-totals"></div>
         </div>
@@ -244,6 +244,7 @@
     ></script>
 
     <script src="./Component/modal.js"></script>
+    <script src="./Component/checkLogin.js"></script>
     <script src="./user/js/cart.js"></script>
   </body>
 </html>

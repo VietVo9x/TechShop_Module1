@@ -8,30 +8,21 @@ const iconCartElement = document.querySelector(".quantity"); // so luong gio han
 
 renderAllQuantityCart();
 //check dang nhap thi hien thi ra cart cua account don
-if (userLogin.isLogin) {
-  const CartForUserLogin = listCart.find(
-    (cart) => cart.email === userLogin.email
-  );
-  if (userLogin.email && CartForUserLogin.carts.length == 0) {
-    //truy vấn đến content cho nó là không có gì
-    const listCartsElement = document.querySelector(".list-carts");
-    listCartsElement.innerHTML =
-      "<h3 class='text-center'>Giỏ hàng bạn trống</h3>";
-  } else if (CartForUserLogin) {
-    const filteredList = listCart.filter(
-      (item) => !item.hasOwnProperty("email")
-    );
 
-    console.log(filteredList);
-    renderCart(filteredList);
-    showCartTotals();
-  }
+const CartForUserLogin = listCart.find(
+  (cart) => cart.email === userLogin.email
+);
+console.log(CartForUserLogin);
+
+if (userLogin.email && CartForUserLogin.carts.length == 0) {
+  //truy vấn đến content cho nó là không có gì
+  const listCartsElement = document.querySelector(".list-carts");
+  listCartsElement.innerHTML =
+    "<h3 class='text-center'>Your cart is empty.</h3>";
 } else {
-  // renderCart();
-  // showCartTotals();
+  renderCart(CartForUserLogin.carts);
+  showCartTotals();
 }
-//k dang nhap thi hien thi ra san pham cua ng dung k dang nhap
-//check có danh sách oder của account này không ? show  : thông báo k có
 
 //hàm render ra danh sách oder
 function renderCart(cart) {
@@ -53,7 +44,7 @@ function renderCart(cart) {
                   <td class="product-name">
                     <a href="">${element.name}</a>
                   </td>
-                  <td class="product-price">${Number(element.price)}</td>
+                  <td class="product-price">$${Number(element.price)}</td>
                   <td class="product-quantity">
                     <button class="quantity-down" onclick="handleDownQuantity(${
                       element.product_id
@@ -89,13 +80,7 @@ function renderCart(cart) {
                           APPLYCOUNPON
                         </button>
                       </div>
-                      <button
-                        class="update-cart action-btn"
-                        name="update_cart"
-                        type="submit"
-                      >
-                        Update Cart
-                      </button>
+                      
                     </div>
                   </td>
                 </tr>`;
@@ -112,7 +97,7 @@ function showCartTotals() {
             <table class="table-cart-totals">
               <tr class="cart-subtotal">
                 <th>Subtotal</th>
-                <td>$$</td>
+                <td>$${totalPrice()}</td>
               </tr>
               <tr class="shipping">
                 <th>Shipping</th>
@@ -123,7 +108,7 @@ function showCartTotals() {
               </tr>
               <tr class="oder-total">
                 <th>Total</th>
-                <td>$$</td>
+                <td>$${totalPrice()}</td>
               </tr>
             </table>
             <div class="mt-4 text-center">
@@ -169,6 +154,7 @@ function handleDownQuantity(id) {
   localStorage.setItem("listCart", JSON.stringify(listCart)); // gửi lại local
   renderAllQuantityCart(); //render lại giỏ hàng header
   renderCart(CartForUserLogin.carts); //render lại danh sách oder
+  showCartTotals(); // show tong tien
 }
 //xoa san pham
 function handleRemoveProductCart(id) {
@@ -187,6 +173,7 @@ function handleRemoveProductCart(id) {
   localStorage.setItem("listCart", JSON.stringify(listCart));
   renderAllQuantityCart();
   renderCart(CartForUserLogin.carts);
+  showCartTotals();
 }
 
 //ham show gio hang tren header
@@ -202,8 +189,11 @@ function renderAllQuantityCart() {
   iconCartElement.textContent = qtys;
 }
 //ham tính tổng tiền của danh sách oder
-// function totalPrice() {
-//   const arrCart = CartForUserLogin.carts;
-//   console.log(arrCart);
-// }
-// totalPrice();
+function totalPrice() {
+  const arrCart = CartForUserLogin.carts;
+  let totalPrice = 0;
+  arrCart.forEach(function (product) {
+    totalPrice += product.price * product.quantity;
+  });
+  return totalPrice;
+}

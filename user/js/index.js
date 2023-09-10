@@ -49,12 +49,12 @@ function renderHtml(list) {
                 /></a>
                 <div class="btn-position">
                   <button  onclick="handleViewProduct(${element.product_id})"><i class="fa-regular fa-eye"></i></button>
-                  <a href=""><i class="fa-solid fa-heart"></i></a>
+                  <a href="" ><i class="fa-solid fa-heart"></i></a>
                   <button  onclick="handleAddToCartProduct(${element.product_id})"><i class="fa-solid fa-cart-shopping"></i></button>
                 </div>
               </div>
               <div class="card-body">
-                <a class="card-title" href="">${element.name}</a>
+                <button class="card-title" href="" onclick="handleViewProduct(${element.product_id})">${element.name}</button>
                 <p class="card-price">$${element.price}</p>
               </div>
             </div>`;
@@ -191,3 +191,5 @@ function renderAllQuantityCart() {
   }
   iconCartElement.textContent = qtys;
 }
+
+//click vao ten san pham thi chuyen sang trang sp do

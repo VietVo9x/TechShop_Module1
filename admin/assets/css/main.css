@@ -212,3 +212,6 @@ button.blue-color {
   background-color: var(--text-color);
   color: var(--white-color);
 }
+.error {
+  color: red;
+}

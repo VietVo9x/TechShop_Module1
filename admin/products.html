@@ -182,6 +182,7 @@
                 <div class="form-group">
                   <label for="product-id">ID</label>
                   <input type="text" class="validate-input " id="product-id" />
+                  <small class="error error-product-id"></small>
                 </div>
                 <div class="form-group">
                   <label for="product-name">NAME</label>
@@ -190,6 +191,7 @@
                     class="validate-input "
                     id="product-name"
                   />
+                  <small class="error error-name"></small>
                 </div>
               </div>
               <div class="form-group-wrapper">
@@ -200,6 +202,7 @@
                     class="validate-input "
                     id="product-price"
                   />
+                  <small class="error error-product-price"></small>
                 </div>
                 <div class="form-group">
                   <label for="product-old-price">OLD PRICE</label>
@@ -212,47 +215,51 @@
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-code">PRODUCT CODE</label>
+                  <label for="product-code">CODE</label>
                   <input
                     type="text"
                     class="validate-input "
                     id="product-code"
                   />
+                  <small class="error error-product-code"></small>
                 </div>
                 <div class="form-group">
-                  <label for="product-category">PRODUCT CATEGORY</label>
+                  <label for="product-category">CATEGORY</label>
                   <input
                     type="text"
                     class="validate-input "
                     id="product-category"
                   />
+                  <small class="error error-product-category"></small>
                 </div>
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-images">PRODUCT IMAGE</label>
-                  <input
-                    type="text"
-                    class="validate-input "
-                    id="product-images"
-                  />
+                  <label for="product-images"
+                    >IMAGE :4 image names separated by 1 comma ,
+                  </label>
+                  <input multiple class="validate-input " id="product-images" />
+                  <small class="error error-product-images"></small>
                 </div>
                 <div class="form-group">
-                  <label for="product-date-in">PRODUCT DATE IN</label>
+                  <label for="product-date-in">DATE IN : dd/mm/yyyy</label>
                   <input
                     type="text"
                     class="validate-input "
                     id="product-date-in"
                   />
+                  <small class="error error-date-in"></small>
                 </div>
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-new">PRODUCT NEW</label>
+                  <label for="product-new">NEW ? 'true' / 'false'</label>
                   <input type="text" class="validate-input " id="product-new" />
                 </div>
                 <div class="form-group">
-                  <label for="product-best-sell">PRODUCT SELLING</label>
+                  <label for="product-best-sell"
+                    >SELLING ? 'true' / 'false'</label
+                  >
                   <input
                     type="text"
                     class="validate-input "
@@ -262,7 +269,7 @@
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-date-out">PRODUCT DATE OUT</label>
+                  <label for="product-date-out">DATE OUT: dd/mm/yyyy</label>
                   <input
                     type="text"
                     class="validate-input "
@@ -270,7 +277,9 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="product-best-deal">PRODUCT BEST DEAL</label>
+                  <label for="product-best-deal"
+                    >BEST DEAL ? 'true' / 'false'</label
+                  >
                   <input
                     type="text"
                     class="validate-input "
@@ -279,15 +288,16 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="product-description">PRODUCT DESCRIPTION</label>
+                <label for="product-description">DESCRIPTION</label>
                 <input
                   type="text"
                   class="validate-input "
                   id="product-description"
                 />
+                <small class="error error-product-desc"></small>
               </div>
               <div class="btn-action">
-                <button>Save</button>
+                <button>SAVE</button>
               </div>
             </form>
           </div>
@@ -358,7 +368,7 @@
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-code">PRODUCT CODE</label>
+                  <label for="product-code">CODE</label>
                   <input
                     type="text"
                     class="validate-input "
@@ -366,7 +376,7 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="product-category">PRODUCT CATEGORY</label>
+                  <label for="product-category">CATEGORY</label>
                   <input
                     type="text"
                     class="validate-input "
@@ -376,15 +386,19 @@
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-images">PRODUCT IMAGE</label>
+                  <label for="product-images"
+                    >IMAGE :4 image names separated by 1 comma ,</label
+                  >
                   <input
-                    type="file"
+                    type="text"
                     class="validate-input "
                     id="product-images"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="product-date-in">PRODUCT DATE IN</label>
+                  <label for="product-date-in"
+                    >PRODUCT DATE IN : dd / mm / yyyy</label
+                  >
                   <input
                     type="text"
                     class="validate-input "
@@ -394,11 +408,13 @@
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-new">PRODUCT NEW</label>
+                  <label for="product-new">NEW ? 'true' / 'false'</label>
                   <input type="text" class="validate-input " id="product-new" />
                 </div>
                 <div class="form-group">
-                  <label for="product-best-sell">PRODUCT SELLING</label>
+                  <label for="product-best-sell"
+                    >SELLING ? 'true' / 'false'</label
+                  >
                   <input
                     type="text"
                     class="validate-input "
@@ -408,7 +424,7 @@
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-date-out">PRODUCT DATE OUT</label>
+                  <label for="product-date-out">DATE OUT: dd / mm / yyyy</label>
                   <input
                     type="text"
                     class="validate-input "
@@ -416,7 +432,9 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="product-best-deal">PRODUCT BEST DEAL</label>
+                  <label for="product-best-deal"
+                    >BEST DEAL ? 'true' / 'false'</label
+                  >
                   <input
                     type="text"
                     class="validate-input "

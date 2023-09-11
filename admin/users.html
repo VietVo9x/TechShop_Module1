@@ -92,7 +92,7 @@
 
                 <div class="arrange-product">
                   <span>Sort:</span>
-                  <select id="sort-product">
+                  <select id="sort-user" onchange="sortUsersByName()">
                     <option value="">Default sorting</option>
                     <option value="1">by Name</option>
                     <option value="1">by ID</option>
@@ -100,18 +100,21 @@
                 </div>
               </div>
               <div class="list-manager">
-                <form action="" class="search-account" id="search-user">
-                  <input type="text" />
-                  <button type="">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                  </button>
-                </form>
+                <input
+                  id="search-user-input"
+                  type="text"
+                  onchange="handleSearch()"
+                />
+                <button>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
                 <table class="table-manager" id="list-user">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Username</th>
                       <th>Email</th>
+                      <th>UserName</th>
                       <th>Fullname</th>
                       <th>Address</th>
                       <th>Status</th>
@@ -127,7 +130,12 @@
                       <td>Quảng Nam</td>
                       <td>Active</td>
                       <td class="td-action">
-                        <button class="action view primary-color" >View</button
+                        <button
+                          class="action view primary-color"
+                          data-bs-toggle="modal"
+                          data-bs-target="#view-user"
+                        >
+                          View</button
                         ><button class="action block secondary-color">
                           Block
                         </button>
@@ -190,15 +198,15 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="view-user"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">VIEW USER</h1>
             <button
               type="button"
               class="btn-close"
@@ -206,7 +214,51 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">
+            <form action="" class="form-edit">
+              <div class="form-group">
+                <label for="email">EMAIL</label>
+                <input
+                  type="text"
+                  class="validate-input "
+                  id="email"
+                  disabled
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="name">NAME</label>
+                <input type="text" class="validate-input " id="name" disabled />
+              </div>
+              <div class="form-group">
+                <label for="address">ADDRESS</label>
+                <input
+                  type="text"
+                  class="validate-input "
+                  id="address"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">PHONE</label>
+                <input
+                  type="text"
+                  class="validate-input "
+                  id="phone"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="status">STATUS</label>
+                <input
+                  type="text"
+                  class="validate-input "
+                  id="status"
+                  disabled
+                />
+              </div>
+            </form>
+          </div>
           <div class="modal-footer">
             <button
               type="button"
@@ -215,11 +267,11 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
     </div>
     <script src="./js/users.js"></script>
+    <script src="../Model/database.js"></script>
   </body>
 </html>

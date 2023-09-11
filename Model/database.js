@@ -4,6 +4,7 @@ const products = [
     name: "mouse",
     description: "chuot may tinh",
     price: 10,
+    old_price: 5,
     image: ["casepc.jpg", "usb1.jpg", "casepc.jpg", "sandisk.jpg"],
     quantity_stock: 1000,
     product_code: "mouse1",
@@ -17,6 +18,7 @@ const products = [
     name: "USB 2.0",
     description: "luu tru du lieu di dong",
     price: 18,
+    old_price: 30,
     image: ["bag1.jpg", "bag1.jpg", "casepc.jpg", "sandisk.jpg"],
     quantity_stock: 1000,
     product_code: "usb1",
@@ -30,6 +32,7 @@ const products = [
     name: "pc1",
     description: "case may tinh",
     price: 100,
+    old_price: 75,
     image: [
       "taycamchoigame.jpg",
       "usb1.jpg",
@@ -49,6 +52,7 @@ const products = [
     name: "day nguon",
     description: "day nguon may tinh",
     price: 5,
+    old_price: 3,
     image: ["daynguon.jpg", "loa1.jpg", "casepc.jpg", "sandisk.jpg"],
     quantity_stock: 1000,
     product_code: "daynguon1",
@@ -62,6 +66,7 @@ const products = [
     name: "sandisck",
     description: "o cung luu tru du lieu",
     price: 16,
+    old_price: 12,
     image: ["ram-1.jpg", "usb1.jpg", "casepc.jpg", "sandisk.jpg"],
     quantity_stock: 1000,
     product_code: "usb2",
@@ -75,6 +80,7 @@ const products = [
     name: "o cung ssd",
     description: "o cung luu tru du lieu",
     price: 38,
+    old_price: 25,
     image: ["usb2.jpg", "usb1.jpg", "casepc.jpg", "sandisk.jpg"],
     quantity_stock: 1000,
     product_code: "ssd1",
@@ -88,6 +94,7 @@ const products = [
     name: "tay cam choi game",
     description: "tay cam choi game ps4",
     price: 58,
+    old_price: 89,
     image: [
       "limit-product-1.jpg",
       "usb1.jpg",
@@ -107,6 +114,7 @@ const products = [
     name: "laptop acer",
     description: "laptop acer",
     price: 120,
+    old_price: 125,
     image: ["laptop2.jpg", "usb1.jpg", "casepc.jpg", "sandisk.jpg"],
     quantity_stock: 1000,
     product_code: "laptop1",
@@ -119,6 +127,7 @@ const products = [
     name: "mouse",
     description: "chuot may tinh",
     price: 15,
+    old_price: 18,
     image: ["casepc.jpg", "usb1.jpg", "casepc.jpg", "sandisk.jpg"],
     quantity_stock: 1000,
     product_code: "mouse1",
@@ -146,6 +155,7 @@ const products = [
     name: "pc1",
     description: "case may tinh",
     price: 100,
+    old_price: 89,
     image: [
       "taycamchoigame.jpg",
       "usb1.jpg",
@@ -165,6 +175,7 @@ const products = [
     name: "day nguon",
     description: "day nguon may tinh",
     price: 5,
+    old_price: 4,
     image: ["daynguon.jpg", "loa1.jpg", "casepc.jpg", "sandisk.jpg"],
     quantity_stock: 1000,
     product_code: "daynguon1",
@@ -182,6 +193,7 @@ const products = [
     quantity_stock: 1000,
     product_code: "usb2",
     date_in: "1/9/2023",
+    old_price: 14,
     date_out: "1/10/2023",
     category: 1,
     sell: true,
@@ -198,42 +210,11 @@ const products = [
     date_out: "1/10/2023",
     category: 1,
     sell: true,
-  },
-  {
-    product_id: 15,
-    name: "tay cam choi game",
-    description: "tay cam choi game ps4",
-    price: 58,
-    image: [
-      "limit-product-1.jpg",
-      "usb1.jpg",
-      "casepc.jpg",
-      "sandisk.jpg",
-      "ssd1.jpg",
-    ],
-
-    quantity_stock: 1000,
-    product_code: "taycamchoigame1",
-    date_in: "1/9/2023",
-    date_out: "1/10/2023",
-    category: 4,
-    new: true,
-    best_deal: true,
-  },
-  {
-    product_id: 16,
-    name: "laptop acer",
-    description: "laptop acer",
-    price: 120,
-    image: ["laptop2.jpg", "usb1.jpg", "casepc.jpg", "sandisk.jpg"],
-    quantity_stock: 1000,
-    product_code: "laptop1",
-    date_in: "1/9/2023",
-    date_out: "1/10/2023",
-    category: 3,
-    new: true,
+    old_price: 35,
   },
 ];
+localStorage.setItem("products", JSON.stringify(products));
+
 // listCart = [
 //   {
 //     email: "vietwork2022@gmail.com",
@@ -276,5 +257,51 @@ const products = [
 //   },
 // ];
 
-localStorage.setItem("products", JSON.stringify(products));
-// localStorage.setItem("listCart", JSON.stringify(listCart));
+//checkout
+
+let checkout = [
+  {
+    id: "id oder",
+    email_user: "email nguoi mua",
+    date: "ngay mua",
+    listProduct: [
+      {
+        idProduct: "id san pham",
+        quantity: "so luong san pham",
+        price: "gia san pham",
+      },
+    ],
+    total: "tong gia",
+    status: "mac dinh la 0 : chua mua",
+  },
+];
+
+//LIST USER
+const list = [
+  {
+    email: "vietvo@gmail.com",
+    address: "quang binh",
+    name: "viet",
+    password: "123456",
+    phone: "0354909360",
+    status: "active",
+  },
+  {
+    email: "haduyhuan@gmail.com",
+    address: "da nang",
+    name: "anh",
+    password: "123456",
+    phone: "0354909360",
+    status: "block",
+  },
+  {
+    email: "lethibich@gmail.com",
+    address: "quang nam",
+    name: "bich",
+    password: "123456",
+    phone: "0354909360",
+    status: "active",
+  },
+];
+
+localStorage.setItem("listUsers", JSON.stringify(list));

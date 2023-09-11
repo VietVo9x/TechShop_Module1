@@ -33,51 +33,53 @@
               <div class="branch-logo">
                 <a href="./index.html"><span>T</span>ech<span>Shop</span></a>
               </div>
-              <ul class="menu-list d-md-flex">
+              <!-- menu-list pc -->
+              <ul class="menu-list d-md-none d-lg-flex justify-content-center">
                 <li class="menu-item"><a href="./index.html">Home</a></li>
-                <li class="menu-item shop-menu">
-                  <a href="">Shop <i class="fa-solid fa-sort-down"></i></a>
-                  <ul class="shop-menu-dropdown">
-                    <li>
-                      <a href="./product.html">Product</a>
-                    </li>
-                    <li>
-                      <a href="./cart.html">Cart</a>
-                    </li>
-                    <li>
-                      <a href="">Checkout</a>
-                    </li>
-                    <li>
-                      <a href="./account.html">Account</a>
-                    </li>
-                  </ul>
+
+                <li class="menu-item">
+                  <a href="./product.html">Product</a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="./cart.html">Cart</a>
                 </li>
                 <li class="menu-item">
-                  <a href="">Build PC</a>
+                  <a href="">Checkout</a>
                 </li>
-                <li class="menu-item page-menu ">
-                  <a href="">Pages <i class="fa-solid fa-sort-down"></i></a>
-                  <ul class="page-menu-dropdown">
-                    <li>
-                      <a href="">About Us</a>
-                    </li>
-                    <li>
-                      <a href="">404 Page</a>
-                    </li>
-                    <li>
-                      <a href="">FAQs</a>
-                    </li>
-                    <li>
-                      <a href="">Contact Us</a>
-                    </li>
-                  </ul>
+                <li class="menu-item">
+                  <a href="./account.html">Account</a>
+                </li>
+              </ul>
+              <!-- nav mobie -->
+              <ul class="menu-list-mobile">
+                <div class="menu-list-mobile-close">
+                  <i class="fa-solid fa-xmark"></i>
+                </div>
+                <li class="menu-item"><a href="./index.html">Home</a></li>
+
+                <li class="menu-item">
+                  <a href="./product.html">Product</a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="./cart.html">Cart</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./checkout.html">Checkout</a>
+                </li>
+                <li class="menu-item">
+                  <a href="./account.html">Account</a>
                 </li>
               </ul>
 
               <div class="nav-bar__content-right">
-                <div class="menu-item btn__toggle">
-                  <a href=""><i class="fa-solid fa-bars"></i></a>
+                <div class="btn__toggle">
+                  <button onclick="handleOpenNavbarMobile()">
+                    <i class="fa-solid fa-bars"></i>
+                  </button>
                 </div>
+                <div class="nav__overlay hiden"></div>
                 <button class="search-btn" onclick="handleToggleSearchBar()">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
@@ -109,7 +111,11 @@
               onclick="handleToggleSearchBar()"
               ><i class="fa-solid fa-arrow-left"></i
             ></label>
-            <input type="text" id="search-bar" />
+            <input
+              type="text"
+              id="search-bar"
+              onchange="handleSearchProduct()"
+            />
             <label for="search-bar" class="search-bar-toggle-btn seach-bar-btn"
               ><i class="fa-solid fa-magnifying-glass"></i
             ></label>
@@ -529,7 +535,7 @@
     ></script>
 
     <script src="./Component/searchBar.js"></script>
+    <script src="./Component/navbarmoblie.js"></script>
     <script src="./user/js/product-detail.js"></script>
-    <script src="./Model/database.js"></script>
   </body>
 </html>

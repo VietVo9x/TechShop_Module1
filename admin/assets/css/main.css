@@ -80,25 +80,22 @@
   padding: 12px;
   border-radius: 4px;
 }
+
 .list-manager > * {
   margin-top: 20px;
 }
 .list-manager h3 {
   font-size: 24px;
 }
-.search-account {
-  position: relative;
-  width: 600px;
-  max-width: 100%;
-}
-.search-account input {
+
+.list-manager input {
   height: 40px;
   padding: 0 12px;
   width: 80%;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
-.search-account button {
+.list-manager button {
   width: 80px;
   height: 40px;
   border: none;
@@ -160,6 +157,9 @@ button.action.block,
 button.blue-color {
   margin-left: 5px;
 }
+button.action.block {
+  width: 80px;
+}
 button.blue-color {
   background-color: #0363cd;
 }
@@ -178,13 +178,12 @@ button.blue-color {
   font-size: 24px;
 }
 /* form modal */
-.form-edit-product {
+.form-edit {
   overflow: scroll-Y;
   margin: 0 auto;
-  padding: 30px 0;
-  width: 400px;
+  padding: 30px;
 }
-.form-edit-product > * {
+.form-edit > * {
   margin-top: 30px;
 }
 .form-group input {
@@ -192,7 +191,11 @@ button.blue-color {
   height: 40px;
   padding: 0 12px;
 }
-
+.form-group-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
 .btn-action {
   text-align: center;
 }

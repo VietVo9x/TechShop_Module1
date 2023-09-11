@@ -37,41 +37,31 @@ function renderProduct() {
   // lấy sản phẩm trên local về
   let html = "";
   //lặp qua gán vào biến html
-  
+
   html = `
             <div class="product-content-left">
               <div class="big-imgage-wrapper ">
-                <img src="./user/assets/images/product/${product.image[0]}" alt="" class="big-image"/>
+                <img src="./user/assets/images/product/${
+                  product.image[0]
+                }" alt="" class="big-image"/>
                 <a href="" class="btn-zoom"
                   ><i class="fa-solid fa-magnifying-glass"></i
                 ></a>
               </div>
               <ul class="list-image-small">
-                <li>
-                  <a href=""
-                    ><img
-                      src="./user/assets/images/product/${product.image[0]}"
-                      alt=""
-                      class="active-border"
-                  /></a>
-                </li>
-                <li>
-                  <a href=""
-                    ><img src="./user/assets/images/product/${product.image[1]}" alt=""
-                  /></a>
-                </li>
-                <li>
-                  <a href=""
-                    ><img
-                      src="./user/assets/images/product/${product.image[2]}"
-                      alt=""
-                  /></a>
-                </li>
-                <li>
-                  <a href=""
-                    ><img src="./user/assets/images/product/${product.image[3]}" alt=""
-                  /></a>
-                </li>
+                ${product.image
+                  .map(
+                    (imageSrc, index) => `
+                    <li>
+                      <a href="">
+                        <img src="./user/assets/images/product/${imageSrc}" alt=""${
+                      index === 0 ? ' class="active-border"' : ""
+                    } />
+                      </a>
+                    </li>
+                  `
+                  )
+                  .join("")}
               </ul>
             </div>
             <div class="product-content-right">
@@ -99,7 +89,9 @@ function renderProduct() {
                   <a href="#" class="quantity-up"> + </a>
                 </div>
                 <div class="d-flex align-items-center">
-                  <button class="add-to-cart btn-cart" onclick="handleAddToCart(${product.product_id})" >ADD TO CART</button>
+                  <button class="add-to-cart btn-cart" onclick="handleAddToCart(${
+                    product.product_id
+                  })" >ADD TO CART</button>
                   <a href="./checkout.html" class="go-to-cart ms-3 btn-cart" >CHECKOUT</a>
                 </div>
                 <div class="btns-single-page mt-3 d-flex align-items-center">

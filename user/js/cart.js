@@ -6,15 +6,13 @@ const categpryProductElement = document.querySelector(".category-products"); //n
 const productsDB = JSON.parse(localStorage.getItem("products")) || []; //list san pham hien thi
 const iconCartElement = document.querySelector(".quantity"); // so luong gio hang
 
-renderAllQuantityCart();
 //check dang nhap thi hien thi ra cart cua account don
 
 const CartForUserLogin = listCart.find(
   (cart) => cart.email === userLogin.email
 );
-console.log(CartForUserLogin);
 
-if (userLogin.email && CartForUserLogin.carts.length == 0) {
+if (!CartForUserLogin || CartForUserLogin.carts.length === 0) {
   //truy vấn đến content cho nó là không có gì
   const listCartsElement = document.querySelector(".list-carts");
   listCartsElement.innerHTML =
@@ -22,6 +20,7 @@ if (userLogin.email && CartForUserLogin.carts.length == 0) {
 } else {
   renderCart(CartForUserLogin.carts);
   showCartTotals();
+  renderAllQuantityCart();
 }
 
 //hàm render ra danh sách oder
@@ -30,15 +29,13 @@ function renderCart(cart) {
   cart.forEach((element) => {
     html += `<tr>
                   <td class="product-remove">
-                    <a href="#" onclick="handleRemoveProductCart(${
+                    <button  onclick="handleRemoveProductCart(${
                       element.product_id
-                    })"><i class="fa-solid fa-x"></i></a>
+                    })"><i class="fa-solid fa-x"></i></button>
                   </td>
                   <td class="product-thumnail">
                     <a href=""
-                      ><img src="./user/assets/images/product/${
-                        element.img
-                      }" alt=""
+                      ><img src="${element.img}" alt=""
                     /></a>
                   </td>
                   <td class="product-name">
@@ -181,11 +178,19 @@ function renderAllQuantityCart() {
   const cartForUserLogin = listCart.find(
     (cart) => cart.email === userLogin.email
   );
-  const carts = cartForUserLogin.carts;
   let qtys = 0;
-  carts.forEach(function (item) {
-    qtys += item.quantity;
-  });
+  if (!userLogin.isLogin) {
+    qtys = 0;
+  } else if (cartForUserLogin) {
+    const carts = cartForUserLogin.carts;
+    if (carts.length === 0) {
+      qtys = 0;
+    } else {
+      carts.forEach(function (item) {
+        qtys += item.quantity;
+      });
+    }
+  }
   iconCartElement.textContent = qtys;
 }
 //ham tính tổng tiền của danh sách oder

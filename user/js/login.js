@@ -30,7 +30,14 @@ formEl.addEventListener("submit", (e) => {
       console.log(i);
       if (listUsers[i].email === user.email) {
         if (listUsers[i].password === user.password) {
-          break; // dừng lai luôn
+          if (listUsers[i].status === "active") {
+            alert("ok");
+            // Thực hiện các tác vụ cần thiết ở đây sau khi đăng nhập thành công
+          } else if (listUsers[i].status === "block") {
+            error.msgEmail = "Email is blocked";
+            isError = true;
+          }
+          break; // Dừng lại sau khi kiểm tra xong email và password
         } else {
           error.msgPassword = "Incorrect password, please check again";
           isError = true;

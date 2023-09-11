@@ -117,11 +117,11 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Product ID</th>
+                      <th>Product Code</th>
                       <th>Product Name</th>
                       <th>Price</th>
+                      <th>Old Price</th>
                       <th>In Stock</th>
-                      <th>Quantity Sold</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -177,34 +177,113 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form action="" class="form-edit-product">
-              <div class="form-group">
-                <label for="product-id">ID</label>
-                <input type="text" class="validate-input " id="product-id" />
+            <form action="" class="form-edit" id="form-edit-product">
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-id">ID</label>
+                  <input type="text" class="validate-input " id="product-id" />
+                </div>
+                <div class="form-group">
+                  <label for="product-name">NAME</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-name"
+                  />
+                </div>
               </div>
-
-              <div class="form-group">
-                <label for="product-name">NAME</label>
-                <input type="text" class="validate-input " id="product-name" />
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-price">PRICE</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-price"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="product-old-price">OLD PRICE</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-old-price"
+                  />
+                </div>
+              </div>
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-code">PRODUCT CODE</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-code"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="product-category">PRODUCT CATEGORY</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-category"
+                  />
+                </div>
+              </div>
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-images">PRODUCT IMAGE</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-images"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="product-date-in">PRODUCT DATE IN</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-date-in"
+                  />
+                </div>
+              </div>
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-new">PRODUCT NEW</label>
+                  <input type="text" class="validate-input " id="product-new" />
+                </div>
+                <div class="form-group">
+                  <label for="product-best-sell">PRODUCT SELLING</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-best-sell"
+                  />
+                </div>
+              </div>
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-date-out">PRODUCT DATE OUT</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-date-out"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="product-best-deal">PRODUCT BEST DEAL</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-best-deal"
+                  />
+                </div>
               </div>
               <div class="form-group">
-                <label for="product-price">PRICE</label>
-                <input type="text" class="validate-input " id="product-price" />
-              </div>
-              <div class="form-group">
-                <label for="product-in-stock">IN STOCK</label>
+                <label for="product-description">PRODUCT DESCRIPTION</label>
                 <input
                   type="text"
                   class="validate-input "
-                  id="product-in-stock"
-                />
-              </div>
-              <div class="form-group">
-                <label for="product-quantity-sold">QUANTIY SOLD</label>
-                <input
-                  type="text"
-                  class="validate-input "
-                  id="product-quantity-sold"
+                  id="product-description"
                 />
               </div>
               <div class="btn-action">
@@ -244,38 +323,106 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form action="" class="form-edit-product">
-              <div class="form-group">
-                <label for="product-id">ID</label>
-                <input type="text" class="validate-input " id="product-id" />
+            <form action="" class="form-edit" id="form-add-product">
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-id">ID</label>
+                  <input type="text" class="validate-input " id="product-id" />
+                </div>
+                <div class="form-group">
+                  <label for="product-name">NAME</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-name"
+                  />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="product-code">Product Code</label>
-                <input type="text" class="validate-input " id="product-code" />
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-price">PRICE</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-price"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="product-old-price">OLD PRICE</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-old-price"
+                  />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="product-name">NAME</label>
-                <input type="text" class="validate-input " id="product-name" />
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-code">PRODUCT CODE</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-code"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="product-category">PRODUCT CATEGORY</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-category"
+                  />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="product-price">PRICE</label>
-                <input type="text" class="validate-input " id="product-price" />
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-images">PRODUCT IMAGE</label>
+                  <input
+                    type="file"
+                    class="validate-input "
+                    id="product-images"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="product-date-in">PRODUCT DATE IN</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-date-in"
+                  />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="product-in-stock">IN STOCK</label>
-                <input
-                  type="text"
-                  class="validate-input "
-                  id="product-in-stock"
-                />
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-new">PRODUCT NEW</label>
+                  <input type="text" class="validate-input " id="product-new" />
+                </div>
+                <div class="form-group">
+                  <label for="product-best-sell">PRODUCT SELLING</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-best-sell"
+                  />
+                </div>
               </div>
-              <div class="form-group">
-                <label for="product-quantity-sold">QUANTIY SOLD</label>
-                <input
-                  type="text"
-                  class="validate-input "
-                  id="product-quantity-sold"
-                />
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-date-out">PRODUCT DATE OUT</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-date-out"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="product-best-deal">PRODUCT BEST DEAL</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-best-deal"
+                  />
+                </div>
               </div>
               <div class="btn-action">
                 <button>Save</button>

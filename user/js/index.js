@@ -184,10 +184,13 @@ function renderAllQuantityCart() {
     qtys = 0;
   } else if (cartForUserLogin) {
     const carts = cartForUserLogin.carts;
-
-    carts.forEach(function (item) {
-      qtys += item.quantity;
-    });
+    if (carts.length === 0) {
+      qtys = 0;
+    } else {
+      carts.forEach(function (item) {
+        qtys += item.quantity;
+      });
+    }
   }
   iconCartElement.textContent = qtys;
 }
@@ -198,4 +201,3 @@ function handleToggleSearchBar() {
   searchBarWrapperElement.classList.toggle("hiden");
   searchBtnElement.classList.toggle("hiden");
 }
-

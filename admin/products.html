@@ -120,7 +120,7 @@
                       <th>Product Code</th>
                       <th>Product Name</th>
                       <th>Price</th>
-                      <th>Old Price</th>
+                      <th>Date in</th>
                       <th>In Stock</th>
                       <th>Action</th>
                     </tr>
@@ -235,10 +235,12 @@
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-images"
-                    >IMAGE :4 image names separated by 1 comma ,
-                  </label>
-                  <input multiple class="validate-input " id="product-images" />
+                  <label for="product-images">IMAGE :4 image names </label>
+                  <input
+                    class="validate-input "
+                    id="product-images"
+                    type="text"
+                  />
                   <small class="error error-product-images"></small>
                 </div>
                 <div class="form-group">
@@ -287,17 +289,29 @@
                   />
                 </div>
               </div>
-              <div class="form-group">
-                <label for="product-description">DESCRIPTION</label>
-                <input
-                  type="text"
-                  class="validate-input "
-                  id="product-description"
-                />
-                <small class="error error-product-desc"></small>
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="product-description">IN STOCK</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-instock"
+                  />
+                  <small class="error error-product-instock"></small>
+                </div>
+                <div class="form-group">
+                  <label for="product-description">DESCRIPTION</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="product-description"
+                  />
+                  <small class="error error-product-desc"></small>
+                </div>
               </div>
               <div class="btn-action">
-                <button>SAVE</button>
+                <button onclick="handleFormEditProduct(event)">EDIT</button>
+                <button class="ms-5">SAVE</button>
               </div>
             </form>
           </div>
@@ -336,114 +350,150 @@
             <form action="" class="form-edit" id="form-add-product">
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-id">ID</label>
-                  <input type="text" class="validate-input " id="product-id" />
+                  <label for="add-product-id">ID</label>
+                  <input
+                    type="text"
+                    class="validate-input"
+                    id="add-product-id"
+                  />
+                  <small class="error add-id-error"></small>
                 </div>
                 <div class="form-group">
-                  <label for="product-name">NAME</label>
+                  <label for="add-product-name">NAME</label>
                   <input
                     type="text"
                     class="validate-input "
-                    id="product-name"
+                    id="add-product-name"
+                  />
+                  <small class="error add-name-error"></small>
+                </div>
+              </div>
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="add-product-price">PRICE</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="add-product-price"
+                  />
+                  <small class="error add-price-error"></small>
+                </div>
+                <div class="form-group">
+                  <label for="add-product-old-price">OLD PRICE</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="add-product-old-price"
                   />
                 </div>
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-price">PRICE</label>
+                  <label for="add-product-code">CODE</label>
                   <input
                     type="text"
                     class="validate-input "
-                    id="product-price"
+                    id="add-product-code"
                   />
+                  <small class="error add-code-error"></small>
                 </div>
                 <div class="form-group">
-                  <label for="product-old-price">OLD PRICE</label>
+                  <label for="add-product-category">CATEGORY</label>
                   <input
                     type="text"
                     class="validate-input "
-                    id="product-old-price"
+                    id="add-product-category"
                   />
-                </div>
-              </div>
-              <div class="form-group-wrapper">
-                <div class="form-group">
-                  <label for="product-code">CODE</label>
-                  <input
-                    type="text"
-                    class="validate-input "
-                    id="product-code"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="product-category">CATEGORY</label>
-                  <input
-                    type="text"
-                    class="validate-input "
-                    id="product-category"
-                  />
+                  <small class="error add-category-error"></small>
                 </div>
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-images"
-                    >IMAGE :4 image names separated by 1 comma ,</label
-                  >
+                  <label for="add-product-images">IMAGE :4 image names </label>
                   <input
-                    type="text"
+                    type="file"
                     class="validate-input "
-                    id="product-images"
+                    id="add-product-images"
+                    multiple
                   />
+                  <small class="error add-images-error"></small>
                 </div>
                 <div class="form-group">
-                  <label for="product-date-in"
+                  <label for="add-product-dateIn"
                     >PRODUCT DATE IN : dd / mm / yyyy</label
                   >
                   <input
                     type="text"
                     class="validate-input "
-                    id="product-date-in"
+                    id="add-product-dateIn"
                   />
+                  <small class="error add-dateIn-error"></small>
                 </div>
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-new">NEW ? 'true' / 'false'</label>
-                  <input type="text" class="validate-input " id="product-new" />
+                  <label for="add-product-new">NEW ? 'true' / 'false'</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="add-product-new"
+                  />
                 </div>
                 <div class="form-group">
-                  <label for="product-best-sell"
+                  <label for="add-product-sell"
                     >SELLING ? 'true' / 'false'</label
                   >
                   <input
                     type="text"
                     class="validate-input "
-                    id="product-best-sell"
+                    id="add-product-sell"
                   />
                 </div>
               </div>
               <div class="form-group-wrapper">
                 <div class="form-group">
-                  <label for="product-date-out">DATE OUT: dd / mm / yyyy</label>
+                  <label for="add-product-date-out"
+                    >DATE OUT: dd / mm / yyyy</label
+                  >
                   <input
                     type="text"
                     class="validate-input "
-                    id="product-date-out"
+                    id="add-product-date-out"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="product-best-deal"
+                  <label for="add-product-deal"
                     >BEST DEAL ? 'true' / 'false'</label
                   >
                   <input
                     type="text"
                     class="validate-input "
-                    id="product-best-deal"
+                    id="add-product-deal"
                   />
                 </div>
               </div>
+              <div class="form-group-wrapper">
+                <div class="form-group">
+                  <label for="add-product-stock">IN STOCK</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="add-product-stock"
+                  />
+                  <small class="error add-error-instock"></small>
+                </div>
+                <div class="form-group">
+                  <label for="add-product-desc">DESCRIPTION</label>
+                  <input
+                    type="text"
+                    class="validate-input "
+                    id="add-product-desc"
+                  />
+                  <small class="error add-error-desc"></small>
+                </div>
+              </div>
               <div class="btn-action">
-                <button>Save</button>
+                <button>SAVE</button>
               </div>
             </form>
           </div>

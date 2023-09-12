@@ -11,7 +11,9 @@
 }
 
 * {
-  box-sizing: inherit;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
   outline: none;
 }
 
@@ -25,9 +27,7 @@ body {
   position: relative;
   font-size: 1.6rem;
 }
-body {
-  padding-right: 0 !important;
-}
+
 a {
   text-decoration: none;
 }
@@ -39,6 +39,7 @@ input,
 select {
   box-sizing: border-box;
 }
+
 .active-border {
   outline: 1px solid var(--primary-color);
 }

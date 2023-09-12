@@ -1,6 +1,6 @@
 //lay du lieu product ve
-const product = JSON.parse(localStorage.getItem("product")); //product hein thi hientaia
-console.log(product.product_id);
+const product = JSON.parse(localStorage.getItem("product")) || {}; //product hein thi hientaia
+console.log(product.id);
 //truy van den doi tuong hien thi
 const categpryProductElement = document.querySelector(".category-products"); //noi hien thi toan bo san pham
 const productsDB = JSON.parse(localStorage.getItem("products")) || []; //list san pham hien thi
@@ -42,14 +42,14 @@ function renderProduct() {
             <div class="product-content-left">
               <div class="big-imgage-wrapper ">
                 <img src="./user/assets/images/product/${
-                  product.image[0]
+                  product.images[0]
                 }" alt="" class="big-image"/>
                 <a href="" class="btn-zoom"
                   ><i class="fa-solid fa-magnifying-glass"></i
                 ></a>
               </div>
               <ul class="list-image-small">
-                ${product.image
+                ${product.images
                   .map(
                     (imageSrc, index) => `
                     <li>
@@ -74,13 +74,13 @@ function renderProduct() {
               </div>
               <div class="product-meta">
                 <span class="sku-wrapper"
-                  >SKU: <span class="sku">${product.product_code}</span></span
+                  >SKU: <span class="sku">${product.code}</span></span
                 >
                 <span class="poster-in"
                   >Category: <a href="">${product.category}</a></span
                 >
               </div>
-              <p class="stock-in">${product.quantity_stock} in stock</p>
+              <p class="stock-in">${product.in_stock} in stock</p>
               
                 <div class="quantity-btns">
                   <a href="#" class="quantity-down" 
@@ -90,7 +90,7 @@ function renderProduct() {
                 </div>
                 <div class="d-flex align-items-center">
                   <button class="add-to-cart btn-cart" onclick="handleAddToCart(${
-                    product.product_id
+                    product.id
                   })" >ADD TO CART</button>
                   <a href="./checkout.html" class="go-to-cart ms-3 btn-cart" >CHECKOUT</a>
                 </div>
@@ -117,17 +117,18 @@ function renderRelatedProduct() {
     ".product-related-content"
   );
   const relatedProducts = filterProduct();
+  console.log(relatedProducts);
   let html = "";
   relatedProducts.forEach((relatedProduct) => {
     html += ` <div class="card">
                 <div class="card-top">
                   <a href=""
-                    ><img src="./user/assets/images/product/${relatedProduct.image[0]}" alt="..."
+                    ><img src="./user/assets/images/product/${relatedProduct.images[0]}" alt="..."
                   /></a>
                   <div class="btn-position">
-                    <button onclick="handleViewProduct(${relatedProduct.product_id})"><i class="fa-regular fa-eye"></i></button>
+                    <button onclick="handleViewProduct(${relatedProduct.id})"><i class="fa-regular fa-eye"></i></button>
                     <a href=""><i class="fa-solid fa-heart"></i></a>
-                    <button onclick="handleAddToCartProduct(${relatedProduct.product_id})"><i class="fa-solid fa-cart-shopping"></i></button>
+                    <button onclick="handleAddToCartProduct(${relatedProduct.id})"><i class="fa-solid fa-cart-shopping"></i></button>
                   </div>
                 </div>
                 <div class="card-body">
@@ -189,16 +190,15 @@ upQuantityElement.addEventListener("click", function (e) {
 const addToCartBtnElement = document.querySelector(".add-to-cart");
 //icon gio hang tren header
 function handleAddToCart(id) {
-  console.log(valueQuantityElement.value);
-  // console.log(id); //product_id
-  // lấy được product_id
+  // console.log(id); //id
+  // lấy được id
   const productsDB = JSON.parse(localStorage.getItem("products")); //products database
   const listCart = JSON.parse(localStorage.getItem("listCart")) || []; //list sản phẩm đã mua
   const userLogin = JSON.parse(localStorage.getItem("userLogin")); //email dang mua
 
-  //có product_id -> tìm produc trong products database
-  const product = productsDB.find((item) => item.product_id === id);
-
+  //có id -> tìm produc trong products database
+  const product = productsDB.find((item) => item.id == id);
+  console.log(product);
   //ngày mua sản phẩm
   const currentDate = new Date();
 
@@ -210,14 +210,15 @@ function handleAddToCart(id) {
 
   // sản phẩm muốn mua
   const productBuy = {
-    product_id: product.product_id,
+    id: product.id,
     price: product.price,
     name: product.name,
-    img: product.image[0],
+    img: product.images[0],
     quantity: Number(valueQuantityElement.value),
     date: formattedDate,
     status: 0,
   };
+  console.log(productBuy);
   // Tìm nơi chứa sản phẩm của user
   const myCart = listCart.find((cart) => cart.email == userLogin.email);
   if (!myCart) {
@@ -229,6 +230,8 @@ function handleAddToCart(id) {
     };
     listCart.push(newCart); // tạo mới listCart nếu chưa có , có rồi thì push sản phẩm mới vào
     localStorage.setItem("listCart", JSON.stringify(listCart)); //đẩy lên lại local
+    renderAllQuantityCart();
+
     return;
   } else {
     //tạo biến newCart : tìm trong listCart có email = email đang login
@@ -237,7 +240,7 @@ function handleAddToCart(id) {
 
     const cart = carts.find(
       //tìm trong giỏ hàng có sản phẩm trùng với sản phẩm mún mua
-      (product) => product.product_id === productBuy.product_id
+      (product) => product.id == productBuy.id
     );
     if (cart) {
       //nếu có thì tăng số lượng lên
@@ -256,21 +259,21 @@ function handleAddToCart(id) {
 }
 //filter san pham co category giong sp đang hien thi
 function filterProduct() {
-  console.log(product.product_id);
+  console.log(product.id);
   const relatedRroducts = productsDB.filter(
     // tìm ra mảng sản phẩm có category tương tự sp hiện tại
-    (item) => item.category === product.category
+    (item) => item.category == product.category
   );
   const newArr = relatedRroducts.filter(
     // xoá sp hiện tại trong mảng category đi
-    (item) => item.product_id !== product.product_id
+    (item) => item.id !== product.id
   );
   return newArr; //trả về arr có cùng category với sp hiện tại
 }
 
 //handle view product related products
-function handleViewProduct(product_id) {
-  const product = productsDB.find((item) => product_id === item.product_id);
+function handleViewProduct(id) {
+  const product = productsDB.find((item) => id == item.id);
   localStorage.setItem("product", JSON.stringify(product));
   document.location.href = "./product-detail.html";
 }
@@ -278,8 +281,8 @@ function handleViewProduct(product_id) {
 //handle add to cart product
 
 function handleAddToCartProduct(id) {
-  //có product_id -> tìm produc trong products database
-  const product = productsDB.find((item) => item.product_id === id);
+  //có id -> tìm produc trong products database
+  const product = productsDB.find((item) => item.id == id);
 
   //ngày mua sản phẩm
   const currentDate = new Date();
@@ -292,7 +295,7 @@ function handleAddToCartProduct(id) {
 
   // sản phẩm muốn mua
   const productBuy = {
-    product_id: product.product_id,
+    id: product.id,
     price: product.price,
     name: product.name,
     img: product.image[0],
@@ -321,7 +324,7 @@ function handleAddToCartProduct(id) {
 
     const cart = carts.find(
       //tìm trong giỏ hàng có sản phẩm trùng với sản phẩm mún mua
-      (product) => product.product_id === productBuy.product_id
+      (product) => product.id == productBuy.id
     );
     if (cart) {
       //nếu có thì tăng số lượng lên

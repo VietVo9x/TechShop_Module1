@@ -35,20 +35,22 @@
               </div>
               <!-- menu-list pc -->
               <ul class="menu-list d-md-none d-lg-flex justify-content-center">
-                <li class="menu-item"><a href="./index.html">Home</a></li>
-
-                <li class="menu-item">
-                  <a href="./product.html">Product</a>
+                <li class="menu-item ">
+                  <a class="link-home" href="./index.html">Home</a>
                 </li>
 
                 <li class="menu-item">
-                  <a href="./cart.html">Cart</a>
+                  <a class="link-product" href="./product.html">Product</a>
+                </li>
+
+                <li class="menu-item ">
+                  <a class="link-cart" href="./cart.html">Cart</a>
                 </li>
                 <li class="menu-item">
-                  <a href="./checkout.html">Checkout</a>
+                  <a class=" link-checkout" href="./checkout.html">Checkout</a>
                 </li>
-                <li class="menu-item">
-                  <a href="./account.html">Account</a>
+                <li class="menu-item ">
+                  <a class="link-account" href="./account.html">Account</a>
                 </li>
               </ul>
               <!-- nav mobie -->
@@ -130,41 +132,14 @@
           <div class="account-content">
             <ul class="account-side-bar">
               <li>
-                <a href="" id="account-update-btn">Account Update </a>
+                <button onclick="handleViewAccount()">Info Account</button>
               </li>
               <li>
-                <a href="">Cart</a>
-              </li>
-              <li>
-                <a href="">Wishlist</a>
+                <button class="mt-4">List Oder</button>
               </li>
             </ul>
-            <div class="form-content m-0">
-              <div class="form-title">
-                <h3 class="heading">User Update</h3>
-              </div>
-              <form action="" id="form-update" class="form-validate">
-                <div class="form-group">
-                  <input type="text" id="phone" placeholder="Phone Number" />
-                  <small class="phone-error error"></small>
-                </div>
-                <div class="form-group">
-                  <input type="text" id="name" placeholder="Name" />
-                  <small class="name-error error"></small>
-                </div>
-                <div class="form-group">
-                  <input type="text" id="address" placeholder="Address" />
-                  <small class="address-error error"></small>
-                </div>
-                <div class="form-group">
-                  <input type="password" id="password" placeholder="Password" />
-                  <small class="password-error error"></small>
-                </div>
-
-                <div class="form-btn">
-                  <button type="submit">Update</button>
-                </div>
-              </form>
+            <div class="main">
+              
             </div>
           </div>
         </div>
@@ -243,6 +218,7 @@
       </footer>
       <!-- footer close -->
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

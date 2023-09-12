@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #list-order {
+          width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="list-order">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Date</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      const orders = JSON.parse(localStorage.getItem('orders'));
+      const listProducts = orders.forEach(element => {
+            return element.listProduct
+      });
+      console.log(listProducts)
+    </script>
+  </body>
+</html>

@@ -1,3 +1,6 @@
+//forcus vao nav item
+const navItemElement = document.querySelector(".menu-item .link-home");
+navItemElement.style.color = "#fc4d4d";
 //lay du lieu local ve
 const productsDB = JSON.parse(localStorage.getItem("products")) || [];
 const iconCartElement = document.querySelector(".quantity"); // so luong gio hang
@@ -44,17 +47,17 @@ function renderHtml(list) {
               <div class="card-top">
                 <a href=""
                   ><img
-                    src="./user/assets/images/product/${element.image[0]}"
+                    src="./user/assets/images/product/${element.images[0]}"
                     alt="..."
                 /></a>
                 <div class="btn-position">
-                  <button  onclick="handleViewProduct(${element.product_id})"><i class="fa-regular fa-eye"></i></button>
+                  <button  onclick="handleViewProduct(${element.id})"><i class="fa-regular fa-eye"></i></button>
                   <a href="" ><i class="fa-solid fa-heart"></i></a>
-                  <button  onclick="handleAddToCartProduct(${element.product_id})"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <button  onclick="handleAddToCartProduct(${element.id})"><i class="fa-solid fa-cart-shopping"></i></button>
                 </div>
               </div>
               <div class="card-body">
-                <button class="card-title" href="" onclick="handleViewProduct(${element.product_id})">${element.name}</button>
+                <button class="card-title" href="" onclick="handleViewProduct(${element.id})">${element.name}</button>
                 <p class="card-price">$${element.price}</p>
               </div>
             </div>`;
@@ -74,7 +77,7 @@ function filterProducts(products, condition) {
       return product.new === true;
     } else if (condition === "sell") {
       // Thay "product.key" bằng tên thuộc tính cụ thể mà bạn muốn kiểm tra
-      return product.sell === true;
+      return product.best_sell === true;
     }
     // Trong trường hợp không xác định, trả về false để không lọc sản phẩm
     return false;
@@ -103,9 +106,9 @@ function handleClickBestDealProduct() {
 }
 
 //handle view product
-function handleViewProduct(product_id) {
-  console.log(product_id);
-  const product = productsDB.find((item) => product_id === item.product_id);
+function handleViewProduct(id) {
+  console.log(id);
+  const product = productsDB.find((item) => id == item.id);
   localStorage.setItem("product", JSON.stringify(product));
   document.location.href = "./product-detail.html";
 }
@@ -114,8 +117,8 @@ function handleAddToCartProduct(id) {
   if (!userLogin.isLogin) {
     window.location.href = "./login.html";
   }
-  //có product_id -> tìm produc trong products database
-  const product = productsDB.find((item) => item.product_id === id);
+  //có id -> tìm produc trong products database
+  const product = productsDB.find((item) => item.id == id);
 
   //ngày mua sản phẩm
   const currentDate = new Date();
@@ -128,7 +131,7 @@ function handleAddToCartProduct(id) {
 
   // sản phẩm muốn mua
   const productBuy = {
-    product_id: product.product_id,
+    id: product.id,
     price: product.price,
     name: product.name,
     img: product.image[0],
@@ -157,7 +160,7 @@ function handleAddToCartProduct(id) {
 
     const cart = carts.find(
       //tìm trong giỏ hàng có sản phẩm trùng với sản phẩm mún mua
-      (product) => product.product_id === productBuy.product_id
+      (product) => product.id == productBuy.id
     );
     if (cart) {
       //nếu có thì tăng số lượng lên
@@ -199,5 +202,5 @@ function renderAllQuantityCart() {
 function handleToggleSearchBar() {
   const searchBarWrapperElement = document.querySelector(".search-bar-toggle");
   searchBarWrapperElement.classList.toggle("hiden");
-  searchBtnElement.classList.toggle("hiden");
+  // searchBtnElement.classList.toggle("hiden");
 }

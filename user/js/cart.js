@@ -1,3 +1,6 @@
+//forcus vao nav item
+const navItemElement = document.querySelector(".menu-item .link-cart ");
+navItemElement.style.color = "#fc4d4d";
 //lấy thông tin user đang đăng nhập trên local về
 const userLogin = JSON.parse(localStorage.getItem("userLogin"));
 const listCart = JSON.parse(localStorage.getItem("listCart")) || []; //list oder của user đang login
@@ -8,11 +11,9 @@ const iconCartElement = document.querySelector(".quantity"); // so luong gio han
 
 //check dang nhap thi hien thi ra cart cua account don
 
-const CartForUserLogin = listCart.find(
-  (cart) => cart.email === userLogin.email
-);
+const CartForUserLogin = listCart.find((cart) => cart.email == userLogin.email);
 
-if (!CartForUserLogin || CartForUserLogin.carts.length === 0) {
+if (!CartForUserLogin || CartForUserLogin.carts.length == 0) {
   //truy vấn đến content cho nó là không có gì
   const listCartsElement = document.querySelector(".list-carts");
   listCartsElement.innerHTML =
@@ -30,12 +31,14 @@ function renderCart(cart) {
     html += `<tr>
                   <td class="product-remove">
                     <button  onclick="handleRemoveProductCart(${
-                      element.product_id
+                      element.id
                     })"><i class="fa-solid fa-x"></i></button>
                   </td>
                   <td class="product-thumnail">
                     <a href=""
-                      ><img src="${element.img}" alt=""
+                      ><img src="./user/assets/images/product/${
+                        element.img
+                      }" alt=""
                     /></a>
                   </td>
                   <td class="product-name">
@@ -44,7 +47,7 @@ function renderCart(cart) {
                   <td class="product-price">$${Number(element.price)}</td>
                   <td class="product-quantity">
                     <button class="quantity-down" onclick="handleDownQuantity(${
-                      element.product_id
+                      element.id
                     })"> - </button
                     ><input
                       type="text"
@@ -52,7 +55,7 @@ function renderCart(cart) {
                       value="${element.quantity}"
                       class="text-center"
                     /><button href="#" class="quantity-up" onclick="handleUpQuantity(${
-                      element.product_id
+                      element.id
                     })"> + </button>
                   </td>
                   <td class="subtotal">$${
@@ -109,9 +112,9 @@ function showCartTotals() {
               </tr>
             </table>
             <div class="mt-4 text-center">
-              <button class="checkout-btn action-btn">
+              <a href="checkout.html " class="checkout-btn action-btn">
                 PROCEED TO CHECKOUT
-              </button>
+              </a>
             </div>`;
   cartsTotalElement.innerHTML = html;
 }
@@ -120,7 +123,7 @@ function showCartTotals() {
 function handleUpQuantity(id) {
   const arrCart = CartForUserLogin.carts; //danh sách oder nếu có
   //tìm ra id trùng với id sản phẩm oder
-  const cart = arrCart.find((product) => product.product_id === id); //tìm ra id trùng với id sản phẩm oder
+  const cart = arrCart.find((product) => product.id == id); //tìm ra id trùng với id sản phẩm oder
 
   cart.quantity++; //click thì tăng 1
 
@@ -137,7 +140,7 @@ function handleDownQuantity(id) {
   let cart; // tạo biến để sản phẩm oder
   arrCart.filter((product, i) => {
     // lặp quả danh sách oder tìm ra vị trí của oder và oder sản phẩm đó
-    if (product.product_id === id) {
+    if (product.id == id) {
       cart = product;
       index = i;
     }
@@ -160,7 +163,7 @@ function handleRemoveProductCart(id) {
   let index = 0;
   let cart;
   arrCart.filter((product, i) => {
-    if (product.product_id === id) {
+    if (product.id == id) {
       cart = product;
       index = i;
     }
@@ -176,14 +179,14 @@ function handleRemoveProductCart(id) {
 //ham show gio hang tren header
 function renderAllQuantityCart() {
   const cartForUserLogin = listCart.find(
-    (cart) => cart.email === userLogin.email
+    (cart) => cart.email == userLogin.email
   );
   let qtys = 0;
   if (!userLogin.isLogin) {
     qtys = 0;
   } else if (cartForUserLogin) {
     const carts = cartForUserLogin.carts;
-    if (carts.length === 0) {
+    if (carts.length == 0) {
       qtys = 0;
     } else {
       carts.forEach(function (item) {

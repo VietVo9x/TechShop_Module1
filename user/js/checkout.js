@@ -1,5 +1,10 @@
+//forcus vao nav item
+const navItemElement = document.querySelector(".menu-item .link-checkout ");
+console.log(navItemElement);
+navItemElement.style.color = "#fc4d4d";
+
 //lay du lieu local ve
-const listCart = JSON.parse(localStorage.getItem("listCart"));
+const listCart = JSON.parse(localStorage.getItem("listCart")) || [];
 const userLogin = JSON.parse(localStorage.getItem("userLogin"));
 //truy van den tat ca doi tuong form
 const formBillingDetailElement = document.querySelector("#form-billing-detail");
@@ -75,6 +80,8 @@ if (!CartForUserLogin || CartForUserLogin.carts.length === 0) {
     localStorage.setItem("orders", JSON.stringify(orders));
     listCart.splice(i, 1); //bien i ở trên là vị tri đơn hàng của user trong listCart
     localStorage.setItem("listCart", JSON.stringify(listCart));
+    alert("you have successfully purchased the item");
+    window.location.href = "./product.html";
   });
 }
 function renderCheckout() {

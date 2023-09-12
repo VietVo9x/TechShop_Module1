@@ -1,3 +1,8 @@
+//truy van den phan tu logi
+const userLogin = JSON.parse(localStorage.getItem("userLogin")) || [];
+if (userLogin) {
+  document.location.href = "./index.html";
+}
 // truy van den form
 const formEl = document.querySelector("#form-login");
 // truy van den cac phan tu trong form

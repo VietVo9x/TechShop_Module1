@@ -1,3 +1,7 @@
+//forcus vao nav item
+const navItemElement = document.querySelector(".menu-item .link-product");
+
+navItemElement.style.color = "#fc4d4d";
 //truy van den doi tuong hien thi
 const categpryProductElement = document.querySelector(".category-products"); //noi hien thi toan bo san pham
 const productsDB = JSON.parse(localStorage.getItem("products")) || []; //list san pham hien thi
@@ -28,16 +32,16 @@ function renderProducts(listItems) {
     html += `<div class="card">
                   <div class="card-top">
                     <a href=""
-                      ><img src="./user/assets/images/product/${user.image[0]}" alt="..."
+                      ><img src="./user/assets/images/product/${user.images[0]}" alt="..."
                     /></a>
                     <div class="btn-position">
-                      <a href="#" onclick="handleViewProduct(event, ${user.product_id})"><i class="fa-regular fa-eye"></i></a>
+                      <a href="#" onclick="handleViewProduct(event, ${user.id})"><i class="fa-regular fa-eye"></i></a>
                       <a href=""><i class="fa-solid fa-heart"></i></a>
-                      <button  onclick="handleAddToCartProduct(${user.product_id})"><i class="fa-solid fa-cart-shopping"></i></button>
+                      <button  onclick="handleAddToCartProduct(${user.id})"><i class="fa-solid fa-cart-shopping"></i></button>
                     </div>
                   </div>
                   <div class="card-body">
-                    <a class="card-title" href="#" onclick="handleViewProduct(event,${user.product_id})">${user.name}</a>
+                    <a class="card-title" href="#" onclick="handleViewProduct(event,${user.id})">${user.name}</a>
                     <p class="card-price">$${user.price}</p>
                   </div>
                 </div>`;
@@ -77,7 +81,7 @@ categorysInputElement.forEach(function (inputElement) {
     if (isCheckedCategory) {
       //nếu isCheckedCategory = true là mình đã checked
       dataCategory = productsDB.filter((product) =>
-        filterCategory.find((category) => category === product.category)
+        filterCategory.find((category) => category == product.category)
       );
       /**đoạn mã trên sẽ lọc listProduct và chỉ trả về các sản phẩm có product.category trùng với một phần tử
        * trong filterCategory. Kết quả cuối cùng là một danh sách các sản phẩm thuộc các danh mục được
@@ -105,7 +109,8 @@ categorysInputElement.forEach(function (inputElement) {
 //handle view product
 function handleViewProduct(event, product_id) {
   event.preventDefault();
-  const product = productsDB.find((item) => product_id === item.product_id);
+  const product = productsDB.find((item) => product_id == item.id);
+  console.log(product);
   localStorage.setItem("product", JSON.stringify(product));
   document.location.href = "./product-detail.html";
 }
@@ -114,8 +119,8 @@ function handleViewProduct(event, product_id) {
 
 function handleAddToCartProduct(id) {
   //có product_id -> tìm produc trong products database
-  const product = productsDB.find((item) => item.product_id === id);
-
+  const product = productsDB.find((item) => item.id == id);
+  console.log(product);
   //ngày mua sản phẩm
   const currentDate = new Date();
 
@@ -127,10 +132,10 @@ function handleAddToCartProduct(id) {
 
   // sản phẩm muốn mua
   const productBuy = {
-    product_id: product.product_id,
+    id: product.id,
     price: product.price,
     name: product.name,
-    img: product.image[0],
+    img: product.images[0],
     quantity: 1,
     date: formattedDate,
     status: 0,
@@ -146,6 +151,8 @@ function handleAddToCartProduct(id) {
     };
     listCart.push(newCart); // tạo mới listCart nếu chưa có , có rồi thì push sản phẩm mới vào
     localStorage.setItem("listCart", JSON.stringify(listCart)); //đẩy lên lại local
+    renderAllQuantityCart();
+
     return;
   } else {
     //tạo biến newCart : tìm trong listCart có email = email đang login
@@ -154,7 +161,7 @@ function handleAddToCartProduct(id) {
 
     const cart = carts.find(
       //tìm trong giỏ hàng có sản phẩm trùng với sản phẩm mún mua
-      (product) => product.product_id === productBuy.product_id
+      (product) => product.id == productBuy.id
     );
     if (cart) {
       //nếu có thì tăng số lượng lên
@@ -181,4 +188,3 @@ function handleSearchProduct() {
   // Xử lý kết quả tìm kiếm, ví dụ: hiển thị danh sách sản phẩm kết quả
   renderProducts(matchingProducts);
 }
-

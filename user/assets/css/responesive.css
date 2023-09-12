@@ -109,4 +109,32 @@
   .custom-link {
     display: block;
   }
+  /* account */
+  .account-content {
+    gap: 10px;
+  }
+  /* product */
+  .category-products {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 567px) {
+  /* account */
+  .account-content {
+    display: block;
+  }
+  .main h3 {
+    margin-top: 30px;
+  }
+  .account-side-bar button {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .form-content {
+    margin: 30px auto;
+  }
+  /* product */
+  .category-products {
+    grid-template-columns: 1fr;
+  }
 }

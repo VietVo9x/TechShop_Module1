@@ -9,6 +9,10 @@ const categpryProductElement = document.querySelector(".category-products"); //n
 const productsDB = JSON.parse(localStorage.getItem("products")) || []; //list san pham hien thi
 const iconCartElement = document.querySelector(".quantity"); // so luong gio hang
 
+//check dang nhap neu k dang nhap thi cho toi link login
+if (!userLogin) {
+  document.location.href = "./login.html";
+}
 //check dang nhap thi hien thi ra cart cua account don
 
 const CartForUserLogin = listCart.find((cart) => cart.email == userLogin.email);

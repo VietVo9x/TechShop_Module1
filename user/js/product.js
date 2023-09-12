@@ -8,11 +8,12 @@ const productsDB = JSON.parse(localStorage.getItem("products")) || []; //list sa
 const iconCartElement = document.querySelector(".quantity"); // so luong gio hang
 const listCart = JSON.parse(localStorage.getItem("listCart")) || []; // list san pham da mua
 const userLogin = JSON.parse(localStorage.getItem("userLogin")); //email dang mua
+let cartForUserLogin;
 renderAllQuantityCart();
 function renderAllQuantityCart() {
-  const cartForUserLogin = listCart.find(
-    (cart) => cart.email === userLogin.email
-  );
+  if (userLogin) {
+    cartForUserLogin = listCart.find((cart) => cart.email === userLogin.email);
+  }
   let qtys = 0;
 
   if (!cartForUserLogin) {
@@ -102,7 +103,6 @@ categorysInputElement.forEach(function (inputElement) {
     }
 
     renderProducts(dataFilter); // ta được mảng sản phẩm đã filter vả render ra
-    console.log(1111, dataFilter);
   });
 });
 
@@ -118,6 +118,10 @@ function handleViewProduct(event, product_id) {
 //handle add to cart product
 
 function handleAddToCartProduct(id) {
+  if (!userLogin) {
+    alert("Please login");
+    document.location.href = "./login.html";
+  }
   //có product_id -> tìm produc trong products database
   const product = productsDB.find((item) => item.id == id);
   console.log(product);

@@ -1,5 +1,5 @@
 //truy van den phan tu logi
-const userLogin = JSON.parse(localStorage.getItem("userLogin")) || [];
+const userLogin = JSON.parse(localStorage.getItem("userLogin"));
 if (userLogin) {
   document.location.href = "./index.html";
 }

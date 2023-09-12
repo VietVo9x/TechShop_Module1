@@ -7,7 +7,7 @@ const productsDB = JSON.parse(localStorage.getItem("products")) || []; //list sa
 const iconCartElement = document.querySelector(".quantity"); // so luong gio hang
 const listCart = JSON.parse(localStorage.getItem("listCart")) || []; // list san pham da mua
 const userLogin = JSON.parse(localStorage.getItem("userLogin")); //email dang mua
-
+let cartForUserLogin;
 //truy van den phan tu de render ra giao dien sp hien tai
 const productElement = document.querySelector(".product-content");
 
@@ -16,9 +16,9 @@ renderAllQuantityCart();
 function renderAllQuantityCart() {
   const listCart = JSON.parse(localStorage.getItem("listCart")) || []; // list san pham da mua
   const userLogin = JSON.parse(localStorage.getItem("userLogin")); //email dang mua
-  const cartForUserLogin = listCart.find(
-    (cart) => cart.email === userLogin.email
-  );
+  if (userLogin) {
+    cartForUserLogin = listCart.find((cart) => cart.email === userLogin.email);
+  }
   let qtys = 0;
 
   if (!cartForUserLogin) {
@@ -192,9 +192,15 @@ const addToCartBtnElement = document.querySelector(".add-to-cart");
 function handleAddToCart(id) {
   // console.log(id); //id
   // lấy được id
+
+  //check login moi dc mua
+  if (!userLogin) {
+    alert("Please login");
+    document.location.href = "./login.html";
+  }
+
   const productsDB = JSON.parse(localStorage.getItem("products")); //products database
   const listCart = JSON.parse(localStorage.getItem("listCart")) || []; //list sản phẩm đã mua
-  const userLogin = JSON.parse(localStorage.getItem("userLogin")); //email dang mua
 
   //có id -> tìm produc trong products database
   const product = productsDB.find((item) => item.id == id);

@@ -115,6 +115,7 @@ function handleViewProduct(id) {
 //ham mua san pham neu dang nhap roi
 function handleAddToCartProduct(id) {
   if (!userLogin.isLogin) {
+    alert("Please login");
     window.location.href = "./login.html";
   }
   //có id -> tìm produc trong products database
